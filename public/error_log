@@ -1,0 +1,5 @@
+[28-Apr-2015 19:21:07 America/New_York] PHP Parse error:  syntax error, unexpected '?>', expecting function (T_FUNCTION) in /home/agroandi/public_html/TribooApp/modelos/promosQRModelo.php on line 18
+[28-Apr-2015 19:22:39 America/New_York] PHP Fatal error:  Call to undefined method promosQRModelo::verIdsPromos() in /home/agroandi/public_html/TribooApp/controladores/verPromosQRControlador.php on line 5
+[28-Apr-2015 19:23:38 America/New_York] PHP Fatal error:  Call to a member function fetch_all() on a non-object in /home/agroandi/public_html/TribooApp/modelos/promosQRModelo.php on line 15
+[28-Apr-2015 20:03:30 America/New_York] PHP Fatal error:  Call to a member function fetch_all() on a non-object in /home/agroandi/public_html/TribooApp/modelos/promosQRModelo.php on line 15
+[28-Apr-2015 20:09:57 America/New_York] PHP Parse error:  syntax error, unexpected '$promo' (T_VARIABLE) in /home/agroandi/public_html/TribooApp/controladores/validarPromo.php on line 6
