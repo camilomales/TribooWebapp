@@ -1,8 +1,8 @@
 <?php
-require_once "../modelos/categoriasModelo.php";
-function editarFactura($valId, $valorNom, $valorPal, $valPos, $valEst){
-	$categoriaModelo = new categoriasModelo();
- 	$modCat = $categoriaModelo->modificarFactura($valId, $valorNom, $valorPal, $valEst, $valPos);
+require_once "../modelos/facturaModelo.php";
+function editarFactura($IdVal, $numFac, $fecFac, $monFac, $idusu){
+	$facturaModelo = new facturaModelo();
+ 	$modCat = $facturaModelo->modificarFactura($IdVal, $numFac, $fecFac, $monFac, $idusu);
 	return $modCat;
 }
 
