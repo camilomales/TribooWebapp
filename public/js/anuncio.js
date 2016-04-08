@@ -101,7 +101,7 @@ $(document).ready(function(){
         $("#btnInfoExtra").hide();
         $("#btnGuardar").show();
         $("#btnUbicacion").show();
-        ajaxmapa();
+        
         var formulario = $('#form-crear-anun');			
         var datos = formulario.serialize();
         var archivos = new FormData();	
@@ -122,6 +122,7 @@ $(document).ready(function(){
                     $("#div-respuesta").html(data);
             }
         });
+        ajaxmapa();
     });
     $("#btnUbicacion").click(function(){
         alert("ubicacion guardada");
@@ -129,8 +130,22 @@ $(document).ready(function(){
     });
     
     $("#btnGuardar").click(function(){
-        alert("Anuncio y ubicación creado exitosamente");
-        location = "misMomentos.php";
+        cx = $("#cx").val();
+        cy = $("#cy").val();
+        direccion = $("#direccion").val();
+        idMensaje = $("#idMensaje").val();
+        $.ajax({
+            data:  'cx='+cx+'&cy='+cy+'&direccion='+direccion+'&idMensaje='+idMensaje,
+            url:   'agregarUbicacion.php',
+            type:  'post',
+
+            success:  function (response) {
+                    $("#div-agr-ubi").html(response);
+
+            }
+        }); 
+        //alert("Anuncio y ubicación creado exitosamente");
+        //location = "misMomentos.php";
     });
     $("#btn-anuncio").click(function(){
         

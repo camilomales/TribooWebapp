@@ -3,6 +3,8 @@ session_start();
 require_once"../controladores/verPromoXTiempoControlador.php";
 require_once"../controladores/verTipoMensajeControlador.php";
 require_once"../controladores/verListasControlador.php";
+require_once '../controladores/verAnunciantesEstablecimientosControlador.php';
+$idUsuario = 1;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -221,10 +223,11 @@ require_once"../controladores/verListasControlador.php";
         <div id="div-respuesta"></div>
       <div class="modal-body">
             <!--Formulario para el mapa(ubicaciones)-->
-            <form id="form-agre-ubi" method="post" class="validator-form" action="agregarUbicaciones.php">
+            <form id="form-agre-ubi" method="post" class="validator-form" action="agregarUbicacion.php">
                 <div id="ajax"></div>
                 <button type="button" class="btn btn-success" name="btnGuardar" id="btnGuardar">Guardar y Terminar</button>
                 <button type="button" class="btn btn-info" name="btnUbicacion" id="btnUbicacion">Guardar y asignar otra ubicación</button>
+                <div id="div-agr-ubi"></div>
             </form>
             
             <!--formulario para mensajes-->
@@ -274,6 +277,19 @@ require_once"../controladores/verListasControlador.php";
                             <?php
                             foreach ($listas as $fila):?>
                             <option value="<?=$fila['idLista']?>"><?=utf8_encode($fila['nombreLista'])?></option>
+                            <?php                            
+                            endforeach;
+                            ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Seleccione su establecimiento: </label>
+                        <select class="form-control" id="idLista" name="idLista">
+                            <option disabled selected>Seleccione</option>
+                            <?php
+                            $establecimiento = verEstablecimiento($idUsuario);
+                            foreach ($establecimiento as $fila):?>
+                            <option value="<?=$fila['idAnunciante']?>"><?=utf8_encode($fila['establecimiento'])?></option>
                             <?php                            
                             endforeach;
                             ?>

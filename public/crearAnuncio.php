@@ -1,5 +1,10 @@
-<?php
+<?php session_start();
 require_once '../controladores/crearAnuncioControlador.php';
+if(isset($_GET['id'])){
+    echo $_GET['id'];
+    unset($_SESSION['idAnuncio']);
+    echo $_SESSION['idAnuncio'];
+}else{
 
 $idUsuario = 1; //despues cambiar por el de sesion(cuando ya se arregle ese problema)
 $idAnunciante = 3; //preguntar sobre la tabla idAnunciante o vericar su analisis relacional
@@ -47,7 +52,7 @@ if($_GET){
             //if($cumpleanos==0)$cumpleanos=null;
             if($linkMasInfo=='')$linkMasInfo=null;
             
-            $formatoImg = array('.jpg', '.png', 'jpeg');
+            $formatoImg = array('.jpg', '.png', '.jpeg','.gif');
             $archivoNom =  $_FILES['rutaImg']['name'];
             $archivoTemp = $_FILES['rutaImg']['tmp_name'];
             $ruta = "./images/screenshots/";
@@ -59,10 +64,12 @@ if($_GET){
                     $rutaImg = "/images/screenshots/".$fechaCreacion.$archivoNom;
                     $anuncio = crearAnuncio($fechaCreacion, $descripcion, $palabrasClave, $valor, $fechaInicio, $fechaFin, $hrPubInicio, $hrPubFin, $linkMasInfo, $sexo, $edad, $cumpleanos, $idTipoMensaje, $idUsuario, $rutaImg, $idLista, $idAnunciante);
                     if($anuncio[0]==1){
-                        echo $anuncio[1];
+                        $_SESSION['idAnuncio']=$anuncio[1];
+                        
                         ?>
                         <span id="anuncioSuccess">Anuncio creado exitosamente</span> <br>     
                         <img class="imgSubida" src="<?=$ruta.$archivoNom;?>"/>
+                        <a href="crearAnuncio.php?id=<?= $_SESSION['idAnuncio'];?>">id</a>
                         <?php
                     }
                 
@@ -82,5 +89,6 @@ if($_GET){
     }
 }  else {
     echo "Error en envio de datos";
+}
 }
 ?>

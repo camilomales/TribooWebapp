@@ -1,3 +1,4 @@
+<?php session_start();?>
 <script>
     var nuevos_marcadores = [];
     
@@ -94,6 +95,6 @@ function cargarmapa(){
 </div>
 <div class="form-group">
     <label class="control-label">Direccion</label>
-    <input class="form-control" type="text" name="direccion" id="direccion" value=""/>
-       
+    <input type="hidden" name="idMensaje" id="idMensaje" value="<?=$_SESSION['idAnuncio']?>"/>
+    <input class="form-control" type="text" name="direccion" id="direccion"/>
 </div>
