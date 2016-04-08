@@ -68,7 +68,7 @@
                     <th>#Factura</th>
                     <th>Fecha Factura</th>
                     <th>Monto</th>
-                    <th>IdUsuario</th>
+                    
                     
                     
                 </tr>
@@ -94,7 +94,7 @@
                     <td class="tdCat"><?php echo utf8_encode($row['codValidacion']); ?></td>                
                     <td class="tdCat"><?php echo utf8_encode($row['fechaVenta']); ?></td>
                     <td class="tdCat"><?php echo $row['montoVenta']; ?></td>
-                    <td class="tdCat"><?php echo $row['idUsuario']; ?></td>
+                    
                     
                     
                 </tr>   
@@ -107,7 +107,7 @@
   
 </div>
 
- <!-- Formulario nueva categoria -->
+ <!-- Formulario nueva Factura -->
 <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -132,10 +132,11 @@
                 <label class="control-label">Monto Factura</label>
                 <input type="number" class="form-control" name="monFac" required="" />
             </div>
+            
           
             <hr class="dotted">
                 <div class="form-group">
-          <button type="submit" class="btn btn-primary" name="GuardarFac" id="GuardarFac" >Guardar</button>
+          <button type="submit" class="btn btn-primary" name="btnini" id="btnini" >Guardar</button>
           
         </div>
       </form>
@@ -157,6 +158,7 @@
       <div class="modal-body" id="divajax">       
             <form  id="form-categ-edit" method="post" class="validator-form" action="modificarFactura.php">
             <input type="hidden" name="idCat" id="idCat" value="<?php echo $id; ?>"></input>
+             <input type="hidden" name="idUsuario" id="idUsuario" value="<?php echo $_SESSION['sesion']; ?>">
                 <div class="form-group">
                     
                     <label class="control-label">#Factura</label>
@@ -175,10 +177,7 @@
                             <label for="estadoE"></label> 
                     </div>
                 </div>
-                    <div class="form-group">
-                    <label class="control-label">idUsuario</label>
-                    <input type="text" class="form-control" name="posicionE" id="posicionE" value=""/>
-                </div>
+                    
                 <hr class="dotted">
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary" name="btnActCat" id="btnActCat">Guardar</button>
