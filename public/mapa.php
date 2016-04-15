@@ -96,5 +96,5 @@ function cargarmapa(){
 <div class="form-group">
     <label class="control-label">Direccion</label>
     <input type="hidden" name="idMensaje" id="idMensaje" value="<?=$_SESSION['idAnuncio']?>"/>
-    <input class="form-control" type="text" name="direccion" id="direccion"/>
+    <input class="form-control" required type="text" name="direccion" id="direccion"/>
 </div>

@@ -1,3 +1,4 @@
+var date = '2016-04-15';
 $(function() {
     $('input[name="daterange"]').daterangepicker({
         timePicker: true,
@@ -32,7 +33,7 @@ $(function() {
             cancelLabel: "Cancelar",
             
         },
-         minDate: "2016-04-05"
+         minDate: date
         
     });
 }); 
@@ -79,6 +80,9 @@ $(document).ready(function(){
         $("#ajax").hide();
         $("#btnGuardar").hide();
         $("#btnUbicacion").hide();
+        obs = $(this);
+        idButton = obs.data("but");
+        alert(idButton);
     });
     $("#btnForm").click(function(){
         $("#anuncioParte1").show();

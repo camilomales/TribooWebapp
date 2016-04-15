@@ -1,10 +1,11 @@
 <?php
 session_start();
+if(isset($_SESSION['sesion'])){
 require_once"../controladores/verPromoXTiempoControlador.php";
 require_once"../controladores/verTipoMensajeControlador.php";
 require_once"../controladores/verListasControlador.php";
 require_once '../controladores/verAnunciantesEstablecimientosControlador.php';
-$idUsuario = 1;
+$idUsuario = $_SESSION['sesion'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -326,8 +327,8 @@ $idUsuario = 1;
                     <div class="form-group">
                         
                         <button type="submit" class="btn btn-success" name="btnContinuar" id="btnContinuar">Continuar</button>
-                        <button type="submit" class="btn btn-info" name="btnInfoExtra" id="btnInfoExtra">Añadir información extra</button>
-                        <button type="button" class="btn btn-info" name="btnForm" id="btnForm">Volver</button>
+                        <button type="submit" class="btn btn-info" name="btnInfoExtra" id="btnInfoExtra" data-but="1">Añadir información extra</button>
+                        <button type="button" class="btn btn-info" name="btnForm" id="btnForm" >Volver</button>
                         <button type="button" class="btn btn-default" id="btnCanc" data-dismiss="modal">Cancelar</button>
                     </div>
                 </div>
@@ -418,3 +419,8 @@ $idUsuario = 1;
 
   </body>
 </html>
+<?php
+}else{
+    header("location:index.php");
+}
+?>
