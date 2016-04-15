@@ -1,10 +1,6 @@
 <?php session_start();
 require_once '../controladores/crearAnuncioControlador.php';
-if(isset($_GET['id'])){
-    echo $_GET['id'];
-    unset($_SESSION['idAnuncio']);
-    echo $_SESSION['idAnuncio'];
-}else{
+
 
 $idUsuario = 1; //despues cambiar por el de sesion(cuando ya se arregle ese problema)
 $idAnunciante = 3; //preguntar sobre la tabla idAnunciante o vericar su analisis relacional
@@ -15,7 +11,8 @@ if($_GET){
         isset($_GET['palabrasClave']) && !empty($_GET['palabrasClave'])&&
         isset($_GET['valor']) && !empty($_GET['valor']) &&
         isset($_GET['idTipoMensaje']) && !empty($_GET['idTipoMensaje']) &&
-        isset($_GET['idLista']) && !empty($_GET['idLista']) &&
+        isset($_GET['idLista']) && !empty($_GET['idLista']) &&        
+        isset($_GET['idAnunciante']) && !empty($_GET['idAnunciante']) &&    
         isset($_FILES['rutaImg']['name']) && !empty($_FILES['rutaImg']['name']) 
             
     ){
@@ -59,9 +56,9 @@ if($_GET){
             $extension = substr($archivoNom, strrpos($archivoNom, '.'));
             if(in_array($extension, $formatoImg)){
                 $dateUnica=date('Y-m-dHis');
-                $archivoNom = $dateUnica.$archivoNom;
+                $archivoNom = $dateUnica.$extension;
                 if(move_uploaded_file($archivoTemp, $ruta.$archivoNom)){
-                    $rutaImg = "/images/screenshots/".$fechaCreacion.$archivoNom;
+                    $rutaImg = "images/screenshots/".$dateUnica.$extension;
                     $anuncio = crearAnuncio($fechaCreacion, $descripcion, $palabrasClave, $valor, $fechaInicio, $fechaFin, $hrPubInicio, $hrPubFin, $linkMasInfo, $sexo, $edad, $cumpleanos, $idTipoMensaje, $idUsuario, $rutaImg, $idLista, $idAnunciante);
                     if($anuncio[0]==1){
                         $_SESSION['idAnuncio']=$anuncio[1];
@@ -69,7 +66,7 @@ if($_GET){
                         ?>
                         <span id="anuncioSuccess">Anuncio creado exitosamente</span> <br>     
                         <img class="imgSubida" src="<?=$ruta.$archivoNom;?>"/>
-                        <a href="crearAnuncio.php?id=<?= $_SESSION['idAnuncio'];?>">id</a>
+                        
                         <?php
                     }
                 
@@ -85,10 +82,15 @@ if($_GET){
             
         }
     }else{
+        ?>
+            <script>alert("Revise los datos. Ocurrio un error");
+                location = "misMomentos.php";
+            </script>
+        <?php
         echo "Revise los datos";
     }
 }  else {
     echo "Error en envio de datos";
 }
-}
+
 ?>

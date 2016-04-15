@@ -6,4 +6,3 @@ function verEstablecimiento($idUsuario){
     return $verEstablecimiento;
 }
 
-verEstablecimiento(1);

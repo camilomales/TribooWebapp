@@ -90,52 +90,62 @@ $(document).ready(function(){
         $("#btnGuardar").hide();
         $("#btnUbicacion").hide();
     });
-    $("#btnContinuar").click(function(){
-        $("#btnCanc").hide();
-        $("#anuncioParte1").hide();
-        $("#ajax").show();
-        $("#anuncioParte2").hide();
-        cargarmapa();
-        $("#btnForm").hide();
-        $("#btnContinuar").hide();
-        $("#btnInfoExtra").hide();
-        $("#btnGuardar").show();
-        $("#btnUbicacion").show();
+     $("#form-crear-anun").validate({
+         submitHandler: function(form) {
+            $("#btnCanc").hide();
+            $("#anuncioParte1").hide();
+            $("#ajax").show();
+            $("#anuncioParte2").hide();
+            cargarmapa();
+            $("#btnForm").hide();
+            $("#btnContinuar").hide();
+            $("#btnInfoExtra").hide();
+            $("#btnGuardar").show();
+            $("#btnUbicacion").show();
         
-        var formulario = $('#form-crear-anun');			
-        var datos = formulario.serialize();
-        var archivos = new FormData();	
-        var url = 'crearAnuncio.php';			
-        for (var i = 0; i < (formulario.find('input[type=file]').length); i++) { 
-            archivos.append((formulario.find('input[type="file"]:eq('+i+')').attr("name")),((formulario.find('input[type="file"]:eq('+i+')')[0]).files[0]));
-        }				
-        $.ajax({
-            url: url+'?'+datos,
-            type: 'POST',
-            contentType: false, 
-            data: archivos,
-            processData:false,
-            beforeSend: function () {                
-                    $("#div-respuesta").html("Enviando, espere por favor...");                    
-            },
-            success:  function (data) {
-                    $("#div-respuesta").html(data);
-            }
-        });
-        ajaxmapa();
-    });
+            var formulario = $('#form-crear-anun');			
+            var datos = formulario.serialize();
+            var archivos = new FormData();	
+            var url = 'crearAnuncio.php';			
+            for (var i = 0; i < (formulario.find('input[type=file]').length); i++) { 
+                archivos.append((formulario.find('input[type="file"]:eq('+i+')').attr("name")),((formulario.find('input[type="file"]:eq('+i+')')[0]).files[0]));
+            }				
+            $.ajax({
+                url: url+'?'+datos,
+                type: 'POST',
+                contentType: false, 
+                data: archivos,
+                processData:false,
+                beforeSend: function () {                
+                        $("#div-respuesta").html("Enviando, espere por favor...");                    
+                },
+                success:  function (data) {
+                        $("#div-respuesta").html(data);
+                }
+            });
+            ajaxmapa();
+         }
+     });
+    
     $("#btnUbicacion").click(function(){
-        alert("ubicacion guardada");
+        tipo = 2;
+        ajaxUbicacion(tipo);
         ajaxmapa();
     });
     
-    $("#btnGuardar").click(function(){
+   function ajaxUbicacion(tipo){
         cx = $("#cx").val();
         cy = $("#cy").val();
         direccion = $("#direccion").val();
         idMensaje = $("#idMensaje").val();
+        if(tipo == 1){
+            data = 'cx='+cx+'&cy='+cy+'&direccion='+direccion+'&idMensaje='+idMensaje;
+        }
+        if(tipo == 2){
+            data = 'cx='+cx+'&cy='+cy+'&direccion='+direccion+'&idMensaje='+idMensaje+'&tipo='+tipo;
+        }            
         $.ajax({
-            data:  'cx='+cx+'&cy='+cy+'&direccion='+direccion+'&idMensaje='+idMensaje,
+            data:  data,
             url:   'agregarUbicacion.php',
             type:  'post',
 
@@ -143,9 +153,14 @@ $(document).ready(function(){
                     $("#div-agr-ubi").html(response);
 
             }
-        }); 
-        //alert("Anuncio y ubicación creado exitosamente");
-        //location = "misMomentos.php";
+        });
+        
+    }
+    
+    $("#btnGuardar").click(function(){
+        tipo = 1;
+        ajaxUbicacion(tipo);
+        
     });
     $("#btn-anuncio").click(function(){
         

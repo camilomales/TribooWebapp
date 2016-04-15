@@ -141,10 +141,8 @@ $idUsuario = 1;
       <section id="main-content">
         <section class="wrapper">
             <div>
-            <button class="btn-info" id="btn-anuncio" data-toggle="modal" data-target="#modal-crear-anun">Crear Anuncio</button>
+                <button class="btn-info" id="btn-anuncio" data-toggle="modal" data-target="#modal-crear-anun">Crear Anuncio</button><br><br>
             </div>
-	
-	
 		
             <div class="row"><?php
                 //$hoy = date("Y-m-d H:i:s");
@@ -237,30 +235,30 @@ $idUsuario = 1;
                         <label class="control-label" for="daterange"> Fecha activa del anuncio: </label>
                         <div class="input-group">        
                             <span class="input-group-addon" ><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
-                            <input type="text" class="form-control" name="daterange" id="daterange" value="2016-03-03 1:30 PM - 2016-03-03 2:00 PM" />
+                            <input type="text" required class="form-control" name="daterange" id="daterange" />
                         </div>
                     </div>
                 
                     <div class="form-group">					
                         <label class="control-label">Descripción: </label>
-                        <textarea name="descripcion" id="descripcion" class="form-control" rows="3" placeholder="Detalla brevemente tu anuncio. Ej: Descuentos en todo el calzado"></textarea>                
+                        <textarea name="descripcion" id="descripcion" required class="form-control" rows="3" placeholder="Detalla brevemente tu anuncio. Ej: Descuentos en todo el calzado"></textarea>                
                     </div>
                     <div class="form-group">					
                         <label class="control-label">Palabras Clave: </label>
-                        <textarea name="palabrasClave" id="palabrasClave" class="form-control" rows="3" placeholder="Ingresa palabras seguidas de una coma (,) que identifiquen tu anuncio"></textarea>                
+                        <textarea required name="palabrasClave" id="palabrasClave" class="form-control" rows="3" placeholder="Ingresa palabras seguidas de una coma (,) que identifiquen tu anuncio"></textarea>                
                     </div>
                     
                     <div class="form-group">
                         <label class="control-label">Valor: </label>
                         <div class="input-group">        
                             <span class="input-group-addon">$</span>
-                            <input type="text" name="valor" id="valor" class="form-control" autocomplete="off" placeholder="Ej. 15.000" id="formato-val" onkeyup="formatoValor(this)" onchange="formatValor(this)" >
+                            <input type="text" required name="valor" id="valor" class="form-control" autocomplete="off" placeholder="Ej. 15.000" id="formato-val" onkeyup="formatoValor(this)" onchange="formatValor(this)" >
                             <span class="input-group-addon">.00</span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label">Tipo de Anuncio: </label>
-                        <select class="form-control" name="idTipoMensaje" id="idTipoMensaje">
+                        <select class="form-control" required name="idTipoMensaje" id="idTipoMensaje">
                             <option disabled selected>Seleccione</option>
                             <?php
                             foreach ($tipoMens as $fila):?>
@@ -272,7 +270,7 @@ $idUsuario = 1;
                     </div>
                     <div class="form-group">
                         <label class="control-label">Ubiquelo en una lista: </label>
-                        <select class="form-control" id="idLista" name="idLista">
+                        <select class="form-control" required id="idLista" name="idLista">
                             <option disabled selected>Seleccione</option>
                             <?php
                             foreach ($listas as $fila):?>
@@ -284,7 +282,7 @@ $idUsuario = 1;
                     </div>
                     <div class="form-group">
                         <label class="control-label">Seleccione su establecimiento: </label>
-                        <select class="form-control" id="idLista" name="idLista">
+                        <select class="form-control" required id="idAnunciante" name="idAnunciante">
                             <option disabled selected>Seleccione</option>
                             <?php
                             $establecimiento = verEstablecimiento($idUsuario);
@@ -298,7 +296,7 @@ $idUsuario = 1;
                     <div class="form-group">
                         <label class="control-label">Cargue su Anuncio</label>
                         
-                        <input class="form-control" type="file"  id="rutaImg" name="rutaImg" />    
+                        <input class="form-control" required type="file"  id="rutaImg" name="rutaImg" />    
                     </div>
                 </div>
                 <!-- Información extra para el formulario-->
@@ -327,8 +325,8 @@ $idUsuario = 1;
                 <div id="botones-crear-anun">
                     <div class="form-group">
                         
-                        <button type="button" class="btn btn-success" name="btnContinuar" id="btnContinuar">Continuar</button>
-                        <button type="button" class="btn btn-info" name="btnInfoExtra" id="btnInfoExtra">Añadir información extra</button>
+                        <button type="submit" class="btn btn-success" name="btnContinuar" id="btnContinuar">Continuar</button>
+                        <button type="submit" class="btn btn-info" name="btnInfoExtra" id="btnInfoExtra">Añadir información extra</button>
                         <button type="button" class="btn btn-info" name="btnForm" id="btnForm">Volver</button>
                         <button type="button" class="btn btn-default" id="btnCanc" data-dismiss="modal">Cancelar</button>
                     </div>
