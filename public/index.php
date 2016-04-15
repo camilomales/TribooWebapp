@@ -214,8 +214,8 @@ else{
 						<i style="color:#ffffff">No te han invitado aún, <a href="#" target="_self">ent&eacute;rate!</a></i>
 						
 					</form></br>
-					<div class="fb-like" data-href="https://www.facebook.com/ideastriboo" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div></br>
-					</br><a href="https://twitter.com/ideastriboo" class="twitter-follow-button" data-show-count="false" data-lang="es">Seguir a @ideastriboo</a>
+					<div class="fb-like" data-href="https://www.facebook.com/ideastriboo" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
+					<!--</br><a href="https://twitter.com/ideastriboo" class="twitter-follow-button" data-show-count="false" data-lang="es">Seguir a @ideastriboo</a>-->
  
 			</div>		     
 

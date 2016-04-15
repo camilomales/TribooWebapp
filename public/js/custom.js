@@ -276,12 +276,12 @@ $("#ingreso").submit(function (e) {
                 data: dataString,
 
                 success: function (data) {        
-                     // $('.subscription-error').html(datos);      
+                     //$('.subscription-error').html(data);      
                 
                     if(data==1){
 
-                        $('.subscription-success').fadeOut(500); 
-                        $('.subscription-error').fadeOut(500);   
+                        $('.subscription-success').html('Bienvenido a Triboo. ').fadeIn(1000); 
+                        $('.subscription-success').fadeOut(2000);
                         //var sesion="<?php session_start(); $_SESSION['loginC'] = $iniciar['kk']; echo $_SESSION['loginC'];?>"
                         window.location.href = "./misMomentos.php";  
                         //location = "./misMomentos.php";    
@@ -291,7 +291,7 @@ $("#ingreso").submit(function (e) {
 
                         $('.subscription-error').html('<span class="icon_close_alt2"></span> E-mail o contraseña incorrectos.').fadeIn(1000);
 
-                        $('.subscription-success').fadeOut(500);                    
+                        $('.subscription-error').fadeOut(2000);                    
 
                     }            
                     
@@ -305,7 +305,7 @@ $("#ingreso").submit(function (e) {
 
             $('.subscription-error').html('<span class="icon_close_alt2"></span> Tu e-mail debe ser v&aacute;lido y contraseña correcta.').fadeIn(1000);
 
-            $('.subscription-success').fadeOut(500);                    
+            $('.subscription-error').fadeOut(1000);                    
         }
 
         return false;

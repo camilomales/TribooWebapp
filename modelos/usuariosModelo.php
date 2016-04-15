@@ -16,8 +16,7 @@ class usuariosModelo extends Modelo{
 		$sql="SELECT * FROM usuarios where mail='$idmail' and pws='$idpws'";	
 		$result = $this->_db->query($sql);
 		$registros = $result->fetch_array(MYSQLI_ASSOC);
-		$tomar= $registros[0];
-		$_SESSION["user"]=$tomar;
+		
 		return $registros;
 	}
 	
