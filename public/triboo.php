@@ -32,7 +32,7 @@ require_once '../controladores/verTodasPromocionesControlador.php';
     <!-- Custom styles -->
 	
     <link href="css/style2.css" rel="stylesheet">
-    <link href="css/style-responsive2.css" rel="stylesheet" />
+    <link href="css/style-responsive3.css" rel="stylesheet" />
 	
 	
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
