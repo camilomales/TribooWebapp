@@ -28,7 +28,7 @@ $idUsuario = $_SESSION['sesion'];
     <link href="css/elegant-icons-style.css" rel="stylesheet" />
     
     <link href="css/style2.css" rel="stylesheet">
-    <link href="css/style-responsive2.css" rel="stylesheet" />
+    <link href="css/style-responsive3.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script src="js/jquery.js"></script>
