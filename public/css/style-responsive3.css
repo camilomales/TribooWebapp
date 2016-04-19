@@ -1,0 +1,111 @@
+@media screen and (max-width: 800px){
+
+	.profile-ava img{
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border: 2px solid #688a7e;
+    display: inline-block;
+    margin-top: 0px;
+    }
+    .profile-ava img.simple{
+    border-radius: 50%;
+    -webkit-border-radius: 50%;    
+    border: 2px solid rgba(0,112,255,0.4);
+    display: inline-block;
+    margin-top: -20px;
+	}
+
+	.dropdown{
+		margin-top: -50px;
+	}
+	 #sidebar {
+        
+        position: static;
+        width: 100%;
+        z-index: 1001;
+
+    }
+    .medio{
+    
+    width: 100%;
+    
+	}
+	 #sidebar > ul > li > a > span {
+        line-height: 35px;
+    }
+
+    #sidebar > ul > li {
+        margin: 0 10px 5px 10px;
+    }
+    #sidebar > ul > li > a {
+        height:35px;
+        line-height:35px;
+        padding: 0 10px;
+        text-align: left;
+    }
+    #sidebar > ul > li > a i{
+        /*display: none !important;*/
+    }
+
+    .mail-info, .mail-info:hover {
+        display: none !important;
+    }
+    #sidebar ul > li > a .arrow, #sidebar > ul > li > a .arrow.open {
+        margin-right: 10px;
+        margin-top: 15px;
+    }
+
+    #sidebar ul > li.active > a .arrow, #sidebar ul > li > a:hover .arrow, #sidebar ul > li > a:focus .arrow,
+    #sidebar > ul > li.active > a .arrow.open, #sidebar > ul > li > a:hover .arrow.open, #sidebar > ul > li > a:focus .arrow.open{
+        margin-top: 15px;
+    }
+
+    #sidebar > ul > li > a, #sidebar > ul > li > ul.sub > li {
+        width: 100%;
+    }
+    #sidebar > ul > li > ul.sub > li > a {
+        background: transparent !important ;
+
+    }
+    #sidebar > ul > li > ul.sub > li > a:hover {
+        /*background: #4A8BC2 !important ;*/
+
+    }
+
+
+    /* sidebar */
+    #sidebar {
+        margin: 0px !important;
+    }
+
+    /* sidebar collabler */
+    #sidebar .btn-navbar.collapsed .arrow {
+        display: none;
+    }
+
+    #sidebar .btn-navbar .arrow {
+        position: absolute;
+        right: 35px;
+        width: 0;
+        height: 0;
+        top:48px;
+        border-bottom: 15px solid #282e36;
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+    }
+#main-content {
+        margin: 0px!important;
+        position: none !important;
+        
+    }
+    .img-responsive{
+
+    }
+    .col-md-4{
+
+    }
+    .wrapper{
+    	margin-top: -10px;
+    }
+
+}
