@@ -1,4 +1,20 @@
-var date = '2016-04-15';
+var hoy = new Date()
+hoy = formatoFecha(hoy);
+
+function formatoFecha(date){        
+    var dd = date.getDate();
+    var mm = date.getMonth()+1; //hoy es 0!
+    var yyyy = date.getFullYear();
+    if(dd<10) {
+        dd='0'+dd
+    } 
+    if(mm<10) {
+        mm='0'+mm
+    } 
+    date = yyyy+'-'+mm+'-'+dd;
+    return date;
+}
+
 $(function() {
     $('input[name="daterange"]').daterangepicker({
         timePicker: true,
@@ -33,7 +49,7 @@ $(function() {
             cancelLabel: "Cancelar",
             
         },
-         minDate: date
+         minDate: hoy
         
     });
 }); 
@@ -82,9 +98,10 @@ $(document).ready(function(){
         $("#btnUbicacion").hide();
         obs = $(this);
         idButton = obs.data("but");
-        alert(idButton);
+        
     });
     $("#btnForm").click(function(){
+        $("#form-crear-anun").validate();
         $("#anuncioParte1").show();
         $("#btnForm").hide();
         $("#btnInfoExtra").show();
@@ -94,7 +111,7 @@ $(document).ready(function(){
         $("#btnGuardar").hide();
         $("#btnUbicacion").hide();
     });
-     $("#form-crear-anun").validate({
+    $("#form-crear-anun").validate({
          submitHandler: function(form) {
             $("#btnCanc").hide();
             $("#anuncioParte1").hide();

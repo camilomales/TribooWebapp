@@ -233,6 +233,11 @@ $idUsuario = $_SESSION['sesion'];
             <form id="form-crear-anun" method="POST" class="validator-form" action="crearAnuncio.php">
                 <div id="anuncioParte1">
                     <div class="form-group">
+                        <label class="control-label">Cargue su Anuncio</label>
+                        
+                        <input class="form-control" required type="file"  id="rutaImg" name="rutaImg" />    
+                    </div>
+                    <div class="form-group">
                         <label class="control-label" for="daterange"> Fecha activa del anuncio: </label>
                         <div class="input-group">        
                             <span class="input-group-addon" ><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
@@ -294,11 +299,7 @@ $idUsuario = $_SESSION['sesion'];
                             ?>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label">Cargue su Anuncio</label>
-                        
-                        <input class="form-control" required type="file"  id="rutaImg" name="rutaImg" />    
-                    </div>
+                    
                 </div>
                 <!-- Información extra para el formulario-->
                 <div id="anuncioParte2">
@@ -327,7 +328,7 @@ $idUsuario = $_SESSION['sesion'];
                     <div class="form-group">
                         
                         <button type="submit" class="btn btn-success" name="btnContinuar" id="btnContinuar">Continuar</button>
-                        <button type="submit" class="btn btn-info" name="btnInfoExtra" id="btnInfoExtra" data-but="1">Añadir información extra</button>
+                        <button type="button" class="btn btn-info" name="btnInfoExtra" id="btnInfoExtra" data-but="1">Añadir información extra</button>
                         <button type="button" class="btn btn-info" name="btnForm" id="btnForm" >Volver</button>
                         <button type="button" class="btn btn-default" id="btnCanc" data-dismiss="modal">Cancelar</button>
                     </div>

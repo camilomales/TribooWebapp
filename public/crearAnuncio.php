@@ -71,7 +71,12 @@ if($_GET){
                     }
                 
                 }else{
-                    echo "Error al subir el archivo";
+                    ?>
+                        <script>alert("Error al subir el archivo"");
+                            
+                        </script>
+                    <?php
+                    
                 }
             }else{
                 echo "Formato de archivo no permitido";
@@ -83,7 +88,7 @@ if($_GET){
         }
     }else{
         ?>
-            <script>alert("Revise los datos. Ocurrio un error");
+            <script>alert("Dejaste datos sin llenar. Ocurrio un error");
                 location = "misMomentos.php";
             </script>
         <?php
