@@ -98,7 +98,14 @@
         position: none !important;
         
     }
+    .modal-content{
+    border-radius:0px;
+    background:rgba(255,255,255,0.9);
+    max-width: 100%; 
+    margin-left: 250px; 
+	}
     .img-responsive{
+
 
     }
     .col-md-4{
