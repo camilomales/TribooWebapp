@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-04-2016 a las 00:44:42
+-- Tiempo de generación: 07-05-2016 a las 01:53:57
 -- Versión del servidor: 5.6.25
 -- Versión de PHP: 5.5.27
 
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `anunciantes` (
 
 INSERT INTO `anunciantes` (`idAnunciante`, `establecimiento`, `direccion`, `telefono`, `local`, `idUsuario`) VALUES
 (3, 'Mas Fruta', 'Cra 33 A No 19-36 Versalles', 756456, 'local 1', 1),
-(4, 'Exito', 'Calle 17 # 12 ', 7652312, 'local 2', 1);
+(4, 'Exito', 'Calle 17 # 12 ', 7652312, 'local 2', 4);
 
 -- --------------------------------------------------------
 
@@ -74,18 +74,6 @@ INSERT INTO `categorias` (`idCategoria`, `nombre`, `palabrasClave`, `fechaCreaci
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cuentas`
---
-
-CREATE TABLE IF NOT EXISTS `cuentas` (
-  `idCuenta` int(11) NOT NULL,
-  `saldo` double NOT NULL,
-  `idUsuario` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `interacciones`
 --
 
@@ -98,19 +86,21 @@ CREATE TABLE IF NOT EXISTS `interacciones` (
   `fechaInteraccion` datetime NOT NULL,
   `tipoInteraccion` int(11) NOT NULL,
   `monto` double NOT NULL,
+  `creditos` double NOT NULL,
+  `confirmado` bit(1) NOT NULL,
   `codValidacion` varchar(10) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `interacciones`
 --
 
-INSERT INTO `interacciones` (`idInteraccion`, `idUsuario`, `idMensaje`, `latitud`, `longitud`, `fechaInteraccion`, `tipoInteraccion`, `monto`, `codValidacion`) VALUES
-(27, 1, 2, 7651651, 75616515, '2015-11-19 17:55:45', 1, 40000, '2342'),
-(28, 1, 12, 7651651, 75616515, '2015-11-19 17:57:05', 1, 150000, '3324'),
-(29, 1, 9, 7651651, 75616515, '2015-11-19 17:57:40', 1, 40000, '232'),
-(30, 1, 1, 7651651, 75616515, '2015-12-03 16:57:21', 1, 6000, '465'),
-(31, 1, 13, 7651651, 75616515, '2015-12-03 18:08:41', 1, 75000, '48946');
+INSERT INTO `interacciones` (`idInteraccion`, `idUsuario`, `idMensaje`, `latitud`, `longitud`, `fechaInteraccion`, `tipoInteraccion`, `monto`, `creditos`, `confirmado`, `codValidacion`) VALUES
+(27, 1, 2, 7651651, 75616515, '2015-11-19 17:55:45', 1, 40000, 0, b'0', '2342'),
+(28, 1, 12, 7651651, 75616515, '2015-11-19 17:57:05', 1, 150000, 0, b'0', '3324'),
+(29, 1, 9, 7651651, 75616515, '2015-11-19 17:57:40', 1, 40000, 0, b'0', '232'),
+(30, 1, 1, 7651651, 75616515, '2015-12-03 16:57:21', 1, 6000, 0, b'0', '465'),
+(31, 1, 13, 7651651, 75616515, '2015-12-03 18:08:41', 1, 75000, 0, b'0', '48946');
 
 -- --------------------------------------------------------
 
@@ -122,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `intereses` (
   `idInteres` int(11) NOT NULL,
   `idUsuario` int(11) NOT NULL,
   `idCategoria` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=143 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=147 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `intereses`
@@ -143,11 +133,11 @@ INSERT INTO `intereses` (`idInteres`, `idUsuario`, `idCategoria`) VALUES
 (135, 1, 1),
 (136, 4, 1),
 (137, 4, 2),
-(138, 4, 3),
-(139, 4, 4),
 (140, 4, 25),
-(141, 4, 32),
-(142, 4, 50);
+(143, 4, 50),
+(144, 4, 32),
+(145, 4, 4),
+(146, 4, 3);
 
 -- --------------------------------------------------------
 
@@ -207,44 +197,33 @@ CREATE TABLE IF NOT EXISTS `mensajes` (
   `activo` bit(1) NOT NULL,
   `idUsuario` int(11) NOT NULL,
   `rutaImg` varchar(50) NOT NULL,
+  `aceptaCreditos` bit(1) NOT NULL,
   `idLista` int(11) NOT NULL,
   `idAnunciante` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `mensajes`
 --
 
-INSERT INTO `mensajes` (`idMensaje`, `fechaCreacion`, `descripcion`, `palabrasClave`, `valor`, `fechaInicio`, `fechaFin`, `hrPubInicio`, `hrPubFin`, `linkMasInfo`, `sexo`, `edad`, `cumpleanos`, `idTipoMensaje`, `activo`, `idUsuario`, `rutaImg`, `idLista`, `idAnunciante`) VALUES
-(1, '2015-10-19 09:17:14', 'Por la compra de un Makaco lleva otro gratis ', 'Makaco, promoción, promo del mes, cuentero, accesorios, muñecos, regalos, detalles', 6000, '2015-10-20', '2016-04-18', '2015-10-20 08:26:30', '2016-04-18 18:00:00', NULL, NULL, 'mayores de 15', b'0', 1, b'1', 1, 'images/screenshots/1.jpg', 8, 3),
-(2, '2015-10-19 08:17:28', 'Aprovecha el 25% de descuento en mantenimiento ', 'computadores, mantenimiento, descuento, software, pc, laptops ', 40000, '2015-10-20', '2015-12-27', '2015-12-09 13:00:00', '2015-12-27 20:00:00', 'www.pc-bit.com', NULL, NULL, b'0', 2, b'1', 1, 'images/screenshots/2.jpg', 9, 4),
-(3, '2015-10-12 07:00:00', '2 cereales con fruta por $5.000', 'mas fruta, desayunos, fruta, cereal, descuento  ', 5000, '2015-10-12', '2015-12-23', '2015-10-12 09:00:00', '2015-10-30 12:00:00', 'www.masfruta.com.co', NULL, NULL, NULL, 1, b'1', 1, 'images/screenshots/5.jpg', 10, 3),
-(4, '2015-10-19 10:20:00', 'Reclama una tarjeta con una rosa ', 'chocolate, comidas, promoción, ChocoDeliciosos', 5000, '2015-10-19', '2015-10-25', '2015-10-19 14:00:00', '2015-10-25 15:00:00', NULL, 'F', NULL, NULL, 1, b'1', 1, 'images/screenshots/7.jpg', 11, 3),
-(5, '2015-10-19 09:30:00', '2 granizados de frutas por $4900', 'promoción, bono, más fruta, helado, granizados, fruta', 4900, '2015-10-19', '2015-10-30', '2015-10-19 13:00:00', '2015-10-30 17:00:00', 'www.masfruta.com.co', NULL, NULL, NULL, 1, b'1', 1, 'images/screenshots/3.jpg', 12, 4),
-(6, '2015-10-17 00:00:00', 'Recibe una limpieza facial \n', 'gratis, limpieza, Shaya, ropa, accesorios', 100000, '2015-10-19', '2015-10-23', '2015-10-20 08:00:00', '2015-10-20 20:00:00', 'www.facebook.com/shayatienda', 'F', NULL, NULL, 1, b'1', 1, 'images/screenshots/6.jpg', 13, 4),
-(7, '2015-10-20 09:15:00', '2 aromáticas de frutas por $2.500', 'fruta, promoción, aromáticas, mas fruta, heladería, tardes', 2500, '2015-10-21', '2015-11-06', '2015-10-20 14:00:00', '2015-11-06 17:00:00', 'www.masfruta.com.co', NULL, NULL, NULL, 1, b'1', 1, 'images/screenshots/4.jpg', 14, 3),
-(8, '2015-10-21 00:00:00', '50% de en camisetas y jeans', 'rebajas, quest, ropa, descuento', 50000, '2015-10-21', '2015-11-18', '2015-10-21 10:00:00', '2015-11-18 12:00:00', 'quest.com.co', 'M', NULL, NULL, 1, b'1', 1, 'images/screenshots/8.jpg', 6, 3),
-(9, '2015-10-12 15:38:39', '30% de descuento en todo el calzado', 'zapatos, calzado, descuento, calzatodo, ', 40000, '2015-10-13', '2015-11-20', '2015-10-13 08:10:00', '2015-11-20 19:00:00', 'www.calzatodo.com.co', NULL, NULL, NULL, 1, b'1', 1, 'images/screenshots/9.jpg', 2, 4),
-(10, '2015-10-22 10:00:00', '2 jeans para dama por solo $39.900', 'jeans´store, jeans, dama, oferta', 40000, '2015-10-23', '2015-10-23', '2015-10-23 09:10:00', '2015-10-23 19:00:00', 'www.jeansstore.com', 'F', 'mayores de edad', NULL, 1, b'1', 1, 'images/screenshots/3.jpg', 13, 3),
-(11, '2015-10-21 08:45:00', 'Promoción sudaderas para hombre desde $75.000', 'sudaderas, hombre, promoción, arena', 75000, '2015-10-21', '2015-10-23', '2015-10-21 13:00:00', '2015-10-23 12:00:00', NULL, 'M', 'mayores de edad', NULL, 1, b'1', 1, 'images/screenshots/1.jpg', 15, 4),
-(12, '2015-10-19 19:00:00', '15% de descuento en calzado NIKE', 'descuento, S & C STORE, nike, puma, fila, climbingland, calzado, zapatos ', 150000, '2015-10-20', '2015-12-16', '2015-10-20 09:10:00', '2015-12-16 19:00:00', NULL, NULL, NULL, NULL, 1, b'1', 1, 'images/screenshots/12.jpg', 2, 3),
-(13, '2015-10-26 07:20:00', 'Pantalón casual para hombre desde $74.900', 'sale, precios especiales, pantalón, hombre, unicentro', 75000, '2015-10-26', '2015-10-28', '2015-10-26 09:00:00', '2015-10-28 17:00:00', NULL, 'M', 'mayores de edad', NULL, 1, b'1', 1, 'images/screenshots/2.jpg', 6, 4),
-(28, '2016-04-07 22:39:21', 'sfasfdasfasfd', 'dsfafasf', 45.616, '2016-04-07', '2016-04-07', '2016-04-07 00:00:00', '0000-00-00 00:00:00', '', '', '', b'0', 2, b'1', 1, '/images/screenshots/2016-04-07 22:39:212016-04-072', 4, 3),
-(29, '2016-04-07 22:40:46', 'kljkdljfl', 'jsfkasjflak', 746.546, '2016-04-07', '2016-04-07', '2016-04-07 00:00:00', '0000-00-00 00:00:00', '', '', '', b'0', 2, b'1', 1, '/images/screenshots/2016-04-07 22:40:462016-04-072', 4, 3),
-(30, '2016-04-07 22:42:09', 'jkjkljlk', 'jkjljkljl', 5.165, '2016-04-07', '2016-04-07', '2016-04-07 00:00:00', '0000-00-00 00:00:00', '', '', '', b'0', 2, b'1', 1, '/images/screenshots/2016-04-07 22:42:092016-04-072', 4, 3),
-(31, '2016-04-07 22:43:47', 'kjkljljl', 'jkjlkjl', 1.656, '2016-04-07', '2016-04-07', '2016-04-07 00:00:00', '0000-00-00 00:00:00', '', '', '', b'0', 2, b'1', 1, '/images/screenshots/2016-04-07 22:43:472016-04-072', 3, 3),
-(32, '2016-04-07 22:45:22', 'kjksdjfkalf', 'kjkajfdlÃ±Ã±', 485.465, '2016-04-07', '2016-04-07', '2016-04-07 00:00:00', '0000-00-00 00:00:00', '', '', '', b'0', 2, b'1', 1, '/images/screenshots/2016-04-07 22:45:222016-04-072', 3, 3),
-(33, '2016-04-07 22:46:39', 'kakfdsjÃ±l', 'kdsjfalklf', 1.564, '2016-04-07', '2016-04-07', '2016-04-07 00:00:00', '0000-00-00 00:00:00', '', '', '', b'0', 1, b'1', 1, '/images/screenshots/2016-04-07 22:46:392016-04-072', 2, 3),
-(34, '2016-04-07 22:49:06', 'asfafd', 'affdaf', 546.546, '2016-04-07', '2016-04-07', '2016-04-07 00:00:00', '0000-00-00 00:00:00', '', '', '', b'0', 2, b'1', 1, '/images/screenshots/2016-04-07 22:49:062016-04-072', 3, 3),
-(35, '2016-04-07 22:50:55', 'jkjljl', 'jkjlkjl', 16.546, '2016-04-07', '2016-04-07', '2016-04-07 00:00:00', '0000-00-00 00:00:00', '', '', '', b'0', 2, b'1', 1, '/images/screenshots/2016-04-07 22:50:552016-04-072', 3, 3),
-(36, '2016-04-07 22:53:55', 'jkljlkjlk', 'jkjkljljl', 454.654, '2016-04-07', '2016-04-07', '2016-04-07 00:00:00', '0000-00-00 00:00:00', '', '', '', b'0', 2, b'1', 1, '/images/screenshots/2016-04-07 22:53:552016-04-072', 3, 3),
-(37, '2016-04-07 23:14:18', 'jnkljklj', 'jkjlkjklj', 1.213, '2016-04-07', '2016-04-07', '2016-04-07 00:00:00', '0000-00-00 00:00:00', '', '', '', b'0', 1, b'1', 1, '/images/screenshots/2016-04-07 23:14:182016-04-072', 3, 3),
-(38, '2016-04-07 23:16:30', 'jkljkljl', 'kjkljlkjlk', 15.616, '2016-04-07', '2016-04-07', '2016-04-07 00:00:00', '0000-00-00 00:00:00', '', '', '', b'0', 1, b'1', 1, '/images/screenshots/2016-04-07 23:16:302016-04-072', 4, 3),
-(39, '2016-04-07 23:17:52', 'jkjkljl', 'jkjlkjl', 11.656, '2016-04-07', '2016-04-07', '2016-04-07 00:00:00', '0000-00-00 00:00:00', '', '', '', b'0', 1, b'1', 1, '/images/screenshots/2016-04-07 23:17:522016-04-072', 3, 3),
-(40, '2016-04-07 23:21:10', 'jasfdkajsfl', 'jdkfsjaslkjfl', 5.165, '2016-04-07', '2016-04-07', '2016-04-07 00:00:00', '0000-00-00 00:00:00', '', '', '', b'0', 2, b'1', 1, '/images/screenshots/2016-04-07 23:21:102016-04-072', 3, 3),
-(41, '2016-04-07 23:53:00', 'kjaksjflksfl', 'jkfjakslfjlk', 15.661, '2016-04-07', '2016-04-07', '2016-04-07 00:00:00', '0000-00-00 00:00:00', '', '', '', b'0', 2, b'1', 1, '/images/screenshots/2016-04-07 23:53:002016-04-072', 3, 3),
-(42, '2016-04-08 00:12:53', 'jkjkjafsljkd', 'djksfjlaksjlkf', 54.546, '2016-04-07', '2016-04-07', '2016-04-07 00:00:00', '0000-00-00 00:00:00', '', '', '', b'0', 2, b'1', 1, '/images/screenshots/2016-04-08 00:12:532016-04-080', 3, 3),
-(43, '2016-04-08 00:16:34', 'promocion', 'promo', 20, '2016-04-07', '2016-04-07', '2016-04-07 00:00:00', '0000-00-00 00:00:00', '', '', '', b'0', 2, b'1', 1, '/images/screenshots/2016-04-08 00:16:342016-04-080', 3, 3);
+INSERT INTO `mensajes` (`idMensaje`, `fechaCreacion`, `descripcion`, `palabrasClave`, `valor`, `fechaInicio`, `fechaFin`, `hrPubInicio`, `hrPubFin`, `linkMasInfo`, `sexo`, `edad`, `cumpleanos`, `idTipoMensaje`, `activo`, `idUsuario`, `rutaImg`, `aceptaCreditos`, `idLista`, `idAnunciante`) VALUES
+(1, '2015-10-19 09:17:14', 'Por la compra de un Makaco lleva otro gratis ', 'Makaco, promoción, promo del mes, cuentero, accesorios, muñecos, regalos, detalles', 6000, '2015-10-20', '2016-04-18', '2015-10-20 08:26:30', '2016-04-18 18:00:00', NULL, NULL, 'mayores de 15', b'0', 1, b'1', 1, 'images/screenshots/1.jpg', b'0', 8, 3),
+(2, '2015-10-19 08:17:28', 'Aprovecha el 25% de descuento en mantenimiento ', 'computadores, mantenimiento, descuento, software, pc, laptops ', 40000, '2015-10-20', '2015-12-27', '2015-12-09 13:00:00', '2015-12-27 20:00:00', 'www.pc-bit.com', NULL, NULL, b'0', 2, b'1', 1, 'images/screenshots/2.jpg', b'0', 9, 4),
+(3, '2015-10-12 07:00:00', '2 cereales con fruta por $5.000', 'mas fruta, desayunos, fruta, cereal, descuento  ', 5000, '2015-10-12', '2015-12-23', '2015-10-12 09:00:00', '2015-10-30 12:00:00', 'www.masfruta.com.co', NULL, NULL, NULL, 1, b'1', 1, 'images/screenshots/5.jpg', b'0', 10, 3),
+(4, '2015-10-19 10:20:00', 'Reclama una tarjeta con una rosa ', 'chocolate, comidas, promoción, ChocoDeliciosos', 5000, '2015-10-19', '2015-10-25', '2015-10-19 14:00:00', '2015-10-25 15:00:00', NULL, 'F', NULL, NULL, 1, b'1', 1, 'images/screenshots/7.jpg', b'0', 11, 3),
+(5, '2015-10-19 09:30:00', '2 granizados de frutas por $4900', 'promoción, bono, más fruta, helado, granizados, fruta', 4900, '2015-10-19', '2015-10-30', '2015-10-19 13:00:00', '2015-10-30 17:00:00', 'www.masfruta.com.co', NULL, NULL, NULL, 1, b'1', 1, 'images/screenshots/3.jpg', b'0', 12, 4),
+(6, '2015-10-17 00:00:00', 'Recibe una limpieza facial \n', 'gratis, limpieza, Shaya, ropa, accesorios', 100000, '2015-10-19', '2015-10-23', '2015-10-20 08:00:00', '2015-10-20 20:00:00', 'www.facebook.com/shayatienda', 'F', NULL, NULL, 1, b'1', 1, 'images/screenshots/6.jpg', b'0', 13, 4),
+(7, '2015-10-20 09:15:00', '2 aromáticas de frutas por $2.500', 'fruta, promoción, aromáticas, mas fruta, heladería, tardes', 2500, '2015-10-21', '2015-11-06', '2015-10-20 14:00:00', '2015-11-06 17:00:00', 'www.masfruta.com.co', NULL, NULL, NULL, 1, b'1', 1, 'images/screenshots/4.jpg', b'0', 14, 3),
+(8, '2015-10-21 00:00:00', '50% de en camisetas y jeans', 'rebajas, quest, ropa, descuento', 50000, '2015-10-21', '2015-11-18', '2015-10-21 10:00:00', '2015-11-18 12:00:00', 'quest.com.co', 'M', NULL, NULL, 1, b'1', 1, 'images/screenshots/8.jpg', b'0', 6, 3),
+(9, '2015-10-12 15:38:39', '30% de descuento en todo el calzado', 'zapatos, calzado, descuento, calzatodo, ', 40000, '2015-10-13', '2015-11-20', '2015-10-13 08:10:00', '2015-11-20 19:00:00', 'www.calzatodo.com.co', NULL, NULL, NULL, 1, b'1', 1, 'images/screenshots/9.jpg', b'0', 2, 4),
+(10, '2015-10-22 10:00:00', '2 jeans para dama por solo $39.900', 'jeans´store, jeans, dama, oferta', 40000, '2015-10-23', '2015-10-23', '2015-10-23 09:10:00', '2015-10-23 19:00:00', 'www.jeansstore.com', 'F', 'mayores de edad', NULL, 1, b'1', 1, 'images/screenshots/3.jpg', b'0', 13, 3),
+(11, '2015-10-21 08:45:00', 'Promoción sudaderas para hombre desde $75.000', 'sudaderas, hombre, promoción, arena', 75000, '2015-10-21', '2015-10-23', '2015-10-21 13:00:00', '2015-10-23 12:00:00', NULL, 'M', 'mayores de edad', NULL, 1, b'1', 1, 'images/screenshots/1.jpg', b'0', 15, 4),
+(12, '2015-10-19 19:00:00', '15% de descuento en calzado NIKE', 'descuento, S & C STORE, nike, puma, fila, climbingland, calzado, zapatos ', 150000, '2015-10-20', '2015-12-16', '2015-10-20 09:10:00', '2015-12-16 19:00:00', NULL, NULL, NULL, NULL, 1, b'1', 1, 'images/screenshots/12.jpg', b'0', 2, 3),
+(13, '2015-10-26 07:20:00', 'Pantalón casual para hombre desde $74.900', 'sale, precios especiales, pantalón, hombre, unicentro', 75000, '2015-10-26', '2015-10-28', '2015-10-26 09:00:00', '2015-10-28 17:00:00', NULL, 'M', 'mayores de edad', NULL, 1, b'1', 1, 'images/screenshots/2.jpg', b'0', 6, 4),
+(67, '2016-05-07 01:06:55', 'dsfgfdsg', 'dfsgsdfg', 4.525, '2016-05-06', '2016-05-06', '2016-05-06 00:00:00', '2016-05-06 23:59:00', '', '', '', b'0', 1, b'1', 1, 'images/screenshots/2016-05-07010655.png', b'0', 10, 3),
+(68, '2016-05-07 01:07:49', 'dfasfd', 'asfafds', 324.423, '2016-05-06', '2016-05-06', '2016-05-06 00:00:00', '2016-05-06 23:59:00', '', '', '', b'0', 2, b'1', 1, 'images/screenshots/2016-05-07010749.png', b'0', 13, 3),
+(69, '2016-05-07 01:24:50', 'ddddd', 'ddddd', 43.242, '2016-05-06', '2016-05-06', '2016-05-06 00:00:00', '2016-05-06 23:59:00', '', '', '', b'0', 1, b'1', 1, 'images/screenshots/2016-05-07012450.png', b'0', 12, 3),
+(70, '2016-05-07 01:25:56', 'favicon', 'sdfadf', 3.232, '2016-05-06', '2016-05-06', '2016-05-06 00:00:00', '2016-05-06 23:59:00', '', '', '', b'0', 1, b'1', 1, 'images/screenshots/2016-05-07012556.png', b'0', 9, 3);
 
 -- --------------------------------------------------------
 
@@ -612,7 +591,17 @@ CREATE TABLE IF NOT EXISTS `ubicaciones` (
   `longitud` double NOT NULL,
   `fechaCreacion` date NOT NULL,
   `idMensaje` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `ubicaciones`
+--
+
+INSERT INTO `ubicaciones` (`idUbicacion`, `direccion`, `municipio`, `pais`, `latitud`, `longitud`, `fechaCreacion`, `idMensaje`) VALUES
+(26, '34535', NULL, NULL, 1.213726811237202, -77.27508544921875, '2016-05-07', 67),
+(27, 'sfsdf', NULL, NULL, 1.211238278585775, -77.27113723754883, '2016-05-07', 68),
+(28, 'rtetre', NULL, NULL, 1.2037726669387228, -77.28727340698242, '2016-05-07', 69),
+(29, 'ewrr', NULL, NULL, 1.207548381138997, -77.28057861328125, '2016-05-07', 70);
 
 -- --------------------------------------------------------
 
@@ -715,13 +704,6 @@ ALTER TABLE `categorias`
   ADD PRIMARY KEY (`idCategoria`);
 
 --
--- Indices de la tabla `cuentas`
---
-ALTER TABLE `cuentas`
-  ADD PRIMARY KEY (`idCuenta`),
-  ADD KEY `idUsuario` (`idUsuario`);
-
---
 -- Indices de la tabla `interacciones`
 --
 ALTER TABLE `interacciones`
@@ -813,20 +795,15 @@ ALTER TABLE `anunciantes`
 ALTER TABLE `categorias`
   MODIFY `idCategoria` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=51;
 --
--- AUTO_INCREMENT de la tabla `cuentas`
---
-ALTER TABLE `cuentas`
-  MODIFY `idCuenta` int(11) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT de la tabla `interacciones`
 --
 ALTER TABLE `interacciones`
-  MODIFY `idInteraccion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=32;
+  MODIFY `idInteraccion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT de la tabla `intereses`
 --
 ALTER TABLE `intereses`
-  MODIFY `idInteres` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=143;
+  MODIFY `idInteres` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=147;
 --
 -- AUTO_INCREMENT de la tabla `listas`
 --
@@ -836,7 +813,7 @@ ALTER TABLE `listas`
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `idMensaje` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=44;
+  MODIFY `idMensaje` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=71;
 --
 -- AUTO_INCREMENT de la tabla `niveles`
 --
@@ -851,7 +828,7 @@ ALTER TABLE `tipomensaje`
 -- AUTO_INCREMENT de la tabla `ubicaciones`
 --
 ALTER TABLE `ubicaciones`
-  MODIFY `idUbicacion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idUbicacion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
@@ -871,12 +848,6 @@ ALTER TABLE `validaciones`
 --
 ALTER TABLE `anunciantes`
   ADD CONSTRAINT `anunciantes_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `cuentas`
---
-ALTER TABLE `cuentas`
-  ADD CONSTRAINT `cuentas_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `interacciones`
