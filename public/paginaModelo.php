@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(isset($_SESSION['sesion'])){
-require_once '../controladores/verTodasPromocionesControlador.php';
+
 require_once"../controladores/verTipoMensajeControlador.php";
 require_once"../controladores/verListasControlador.php";
 require_once '../controladores/verAnunciantesEstablecimientosControlador.php';
@@ -16,7 +16,7 @@ $idUsuario = $_SESSION['sesion'];
     <meta name="author" content="GeeksLabs">
     <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
     
-    <title>Todas las promociones Triboo</title>
+    <title>Página Modelo</title>
     <?php include './pages/scripts-styles-principal.php';?>
   </head>
 
@@ -31,23 +31,9 @@ $idUsuario = $_SESSION['sesion'];
         <?php include './pages/menu.php';?>
         <section id="main-content">
           <section class="wrapper">          
-              <div class="row"><?php
-                foreach ($promo as $row): ?>
-                <div class="col-md-4">                
-                      <img class="img-responsive" src="<?php echo $row['rutaImg'];?>">
-                      <br/><?php
-                      echo utf8_encode($row['descripcionMsj']);?><br/><?php
-                      echo utf8_encode($row['descripcionTipo']);?><br/><?php
-                      echo utf8_encode($row['direccion']);?><br/>
-                      <button class="btn-info" data-toggle="modal" data-target="#modal-aprov-prom"
-                      data-id="<?php echo $row['idMensaje'];?>"
-                      data-img="<?php echo $row['rutaImg'];?>"
-                      data-idmen="<?php echo $row['idMensaje'];?>"
-                      data-idusu="<?php echo $_SESSION['sesion'];?>"
-                      data-monto="<?php echo $row['valor'];?>">Aprovechar Promoción</button><hr>             
-                </div><?php
-                endforeach;?>
-              </div>              
+              
+              AQUÍ TODO EL CONTENIDO DE LA PAGINA
+              <?php for($i=0; $i<22; $i++){echo"<br>";}?>
           </section>
         </section>
         <!--main content end-->

@@ -25,7 +25,7 @@ if($_GET){
         $posSepDer = strpos($derecha, '|');
         
         $hrPubInicio = str_replace("|", "", $izquierda);
-        $hrPubFin = str_replace("|", "", $derecha);
+        $hrPubFin = trim(str_replace("|", "", $derecha));
         $fechaInicio = substr($izquierda, 0, ($posSepIzq-1));
         $fechaFin = substr($derecha, 0, ($posSepDer-1));
         $descripcion = $_GET['descripcion'];
@@ -73,7 +73,7 @@ if($_GET){
                 }else{
                     ?>
                         <script>alert("Error al subir el archivo"");
-                            
+                            location.reload();
                         </script>
                     <?php
                     
@@ -88,8 +88,8 @@ if($_GET){
         }
     }else{
         ?>
-            <script>alert("Dejaste datos sin llenar. Ocurrio un error");
-                location = "misMomentos.php";
+            <script>alert("Dejaste datos sin llenar. Revisa los campos antes de continuar");
+                location.reload();
             </script>
         <?php
         echo "Revise los datos";

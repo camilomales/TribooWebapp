@@ -8,3 +8,7 @@
 .error{
     color:red;
 }
+
+.item-menu:hover{
+    cursor:pointer;
+}

@@ -25,7 +25,7 @@ if($_POST){
             }else{
          ?>
             <script>alert("Ubicación agregada");
-            location = "misMomentos.php";
+            location.reload();
             </script> 
             <?php
             }
