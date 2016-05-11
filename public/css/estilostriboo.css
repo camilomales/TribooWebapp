@@ -12,3 +12,14 @@
 .item-menu:hover{
     cursor:pointer;
 }
+
+#linkRegistro{
+    cursor:pointer;
+}
+.modal-body{
+    text-align: left;
+}
+
+#correoReg, #claveReg{
+    height:  45px;
+}

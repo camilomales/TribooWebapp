@@ -98,13 +98,21 @@ class usuariosModelo extends Modelo{
 		   return;		   
 		}				
 	}
-	public function insertarUsuario($mail, $pws){
+	public function registrarUsuario($mail, $pws){
 		$sql="INSERT INTO usuarios (mail, pws) VALUES ('$mail', '$pws') ";
 		$result = $this->_db->query($sql);
 		if ($this->_db->error ){
 		   echo "Error al actualizar el registro: ".$this->_db->error;
 		   return;		   
-		}				
+		}  else {
+                    return 1;
+                }				
 	}
+        public function comprobarEmail($mail){
+                $sql="SELECT COUNT(*) as contar FROM usuarios WHERE mail = '".$mail."'";
+                $result = $this->_db->query($sql);
+                $registros = $result->fetch_array(MYSQLI_ASSOC);
+                return $registros;
+        }
 }
 ?>
