@@ -276,7 +276,7 @@ $("#ingreso").submit(function (e) {
                 data: dataString,
 
                 success: function (data) {        
-                     //$('.subscription-error').html(data);      
+                    //$('.subscription-error').html(data);      
                 
                     if(data==1){
 
@@ -287,13 +287,22 @@ $("#ingreso").submit(function (e) {
                         //location = "./misMomentos.php";    
                         //window.location.href = "./frmUsuario.php";  
 
-                    }   else if(data==0) {
+                    }
+                    if(data==0) {
 
                         $('.subscription-error').html('<span class="icon_close_alt2"></span> E-mail o contraseña incorrectos.').fadeIn(1000);
 
                         $('.subscription-error').fadeOut(2000);                    
 
-                    }            
+                    }
+                    if(data==2) {
+
+                        $('.subscription-success').html('Completa tu perfil. ').fadeIn(1000); 
+                        $('.subscription-error').fadeOut(2000);
+                       
+                        window.location.href = "./completarPerfil.php";  
+
+                    }
                     
                 }
 

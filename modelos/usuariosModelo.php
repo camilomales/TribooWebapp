@@ -19,7 +19,12 @@ class usuariosModelo extends Modelo{
 		
 		return $registros;
 	}
-	
+	public function verDatosUsuario($idUsuario){
+		$sql="SELECT * FROM usuarios where idUsuario=".$idUsuario;	
+		$result = $this->_db->query($sql); //devuelve true o false		
+		$registros = $result->fetch_array(MYSQLI_ASSOC);
+		return $registros;
+	}
 	
 	public function modificarUsuario($idUsuario, $nombres, $apellidos, $feNacimiento, $sexo, $user, $pws, $web, $acerca){
 		$sql="UPDATE usuarios SET pws='$pws', nombres='$nombres', apellidos='$apellidos', feNacimiento='$feNacimiento', sexo='$sexo', user='$user', web='$web', acerca='$acerca' WHERE idUsuario='$idUsuario'";
