@@ -248,22 +248,27 @@ else{
         <h3 class="modal-title" id="myModalLabel"><span class="strong colored-text">Registrarse en Triboo </span> </h3>
       </div>
       <div class="modal-body">
-          <form  id="formRegistro" method="post" class="validator-form" action="guardarInteraccion.php">
+          <form  id="formRegistro" name="formRegistro" method="post" class="validator-form">
             <div class="form-group">
                 <span class="glyphicon glyphicon-envelope"></span>                
                 <label class="control-label">Correo </label>
-                <input type="email" class="form-control input-box" name="correoReg" id="correoReg"/>               
+                <input type="email" class="form-control input-box" required name="correoReg" id="correoReg"/>               
             </div>
             <div class="form-group">
                 <span class="glyphicon glyphicon-lock"></span>
                 <label class="control-label">Contraseña </label>
-                <input type="password" class="form-control input-box" name="claveReg" id="claveReg"/>               
+                <input type="password" class="form-control input-box" required name="claveReg" id="claveReg"/>               
+            </div>
+            <div class="form-group">
+                <span class="glyphicon glyphicon-lock"></span>
+                <label class="control-label">Confirme contraseña </label>
+                <input type="password" class="form-control input-box" name="password_confirm" id="password_confirm"/>               
             </div>
             <div class="form-group">
                 <div id="respuestaReg"></div>
             </div>
             <div class="btn-group">
-                <button type="button" class="btn standard-button btn-sm" id="btnRegistrar">
+                <button type="submit" class="btn standard-button btn-sm" id="btnRegistrar">
                    Registrarse
                 </button>
             </div>
@@ -291,6 +296,7 @@ jQuery(window).load(function() {
 })
 
 </script>
+<script src="js/jquery.validate.js"></script>
 <script src="js/registrarUsuario.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/retina-1.1.0.min.js"></script>

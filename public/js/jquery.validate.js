@@ -281,7 +281,7 @@ $.extend($.validator, {
 		number: "Digite un valor numérico.",
 		digits: "Digite solamente digitos.",
 		creditcard: "Digite un numero de tarjeta válido.",
-		equalTo: "Digite un valor similar.",
+		equalTo: "Las contraseñas no coinciden.",
 		maxlength: $.validator.format("Por favor digite no mas de  {0} caracteres."),
 		minlength: $.validator.format("Por favor digite como mínimo {0} caracteres."),
 		rangelength: $.validator.format("Por favor digite un valor  entre {0} y {1} caracteres de largo."),

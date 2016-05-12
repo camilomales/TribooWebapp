@@ -16,6 +16,14 @@ if($_POST){
             $registrar = guardarUsuario($mail, md5($pws));
             if($registrar==1){
                 echo "Usuario registrado exitosamente. Ingrese a su cuenta ";?>
+<script>
+    $(document).ready(function(){
+        $("#correoReg").val("");
+        $("#claveReg").val("");
+        $("#password_confirm").val("");
+        
+    });
+</script>
 <a href="index.php">aqui!</a>
 <?php
             }
