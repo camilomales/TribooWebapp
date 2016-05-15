@@ -38,6 +38,7 @@ $idUsuario = $_SESSION['sesion'];
             <div class="row"><?php
                 //$hoy = date("Y-m-d H:i:s");
                 //echo $hoy;
+            
                   foreach ($msj3 as $row): ?>
                   <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                         <div class"cols-xs col-sm-3 col-md-6 col-lg-6">

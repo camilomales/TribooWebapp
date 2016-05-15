@@ -159,3 +159,38 @@
     </div>
   </div>
 </div>
+
+<!--Modal Editar Perfil-->
+
+<div class="modal fade" id="modal-editar-perfil" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h3 class="modal-title" id="myModalLabel">Editar Perfil</h3>
+        
+      </div>        
+      <div class="modal-body">
+          <div id="ajax-perfil"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modal intereses-->
+
+<div class="modal fade" id="modal-intereses" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h3 class="modal-title" id="myModalLabel">Tus intereses</h3>
+        
+      </div>        
+      <div class="modal-body">
+          <div id="ajax-intereses">aqui</div>
+          
+      </div>
+    </div>
+  </div>
+</div>

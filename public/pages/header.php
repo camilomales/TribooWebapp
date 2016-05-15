@@ -16,10 +16,10 @@
             <ul class="dropdown-menu extended logout">
                 <div class="log-arrow-up"></div>
                 <li class="eborder-top">
-                    <a href="#"><i class="icon_profile"></i> Editar perfil</a>
+                    <a class="item-menu" data-toggle="modal" data-target="#modal-editar-perfil" id="editarPerfil"><i class="icon_profile"></i> Editar perfil</a>
                 </li>
                 <li>
-                    <a href="#"><i class="icon_mail_alt"></i> Configuracion de Cuenta</a>
+                    <a class="item-menu" data-toggle="modal" data-target="#modal-intereses" id="verIntereses"><i class="icon_mail_alt"></i> Tus intereses</a>
                 </li>
                  <li>
                     <a class="item-menu" id="btn-anuncio" data-toggle="modal" data-target="#modal-crear-anun"><i class="icon_mail_alt"></i> Crear Anuncio</a>

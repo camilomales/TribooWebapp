@@ -26,8 +26,8 @@ class usuariosModelo extends Modelo{
 		return $registros;
 	}
 	
-	public function modificarUsuario($idUsuario, $nombres, $apellidos, $feNacimiento, $sexo, $user, $pws, $web, $acerca){
-		$sql="UPDATE usuarios SET pws='$pws', nombres='$nombres', apellidos='$apellidos', feNacimiento='$feNacimiento', sexo='$sexo', user='$user', web='$web', acerca='$acerca' WHERE idUsuario='$idUsuario'";
+	public function modificarUsuario($idUsuario, $nombres, $apellidos, $feNacimiento, $sexo, $user, $psw, $web, $acerca){
+		$sql="UPDATE usuarios SET pws='$psw', nombres='$nombres', apellidos='$apellidos', feNacimiento='$feNacimiento', sexo='$sexo', user='$user', web='$web', acerca='$acerca' WHERE idUsuario='$idUsuario'";
 		$result = $this->_db->query($sql);
 		if ($this->_db->error ){
 		   echo "Error al actualizar el registro: ".$this->_db->error;
@@ -35,9 +35,10 @@ class usuariosModelo extends Modelo{
 		   return;		   
 		}
 		else{
-			$registro=1;
+                    $registro=1;
+                    return $registro;
 		}
-		return $registro;			
+					
 	}
 
 	public function llevarDatos($idUsuario){

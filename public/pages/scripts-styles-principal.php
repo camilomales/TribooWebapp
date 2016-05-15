@@ -13,7 +13,11 @@
 <link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 <script src="js/jquery.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+
 <script src="js/anuncio.js"></script>
+<script src="js/editarPerfil.js"></script>
+<script src="js/tusIntereses.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <!-- nice scroll -->
 <script src="js/jquery.scrollTo.min.js"></script>

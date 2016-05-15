@@ -20,7 +20,8 @@ if($_POST){
     $(document).ready(function(){
         $("#correoReg").val("");
         $("#claveReg").val("");
-        $("#password_confirm").val("");
+        
+        $("#claveRegConfirm").val("");
         
     });
 </script>

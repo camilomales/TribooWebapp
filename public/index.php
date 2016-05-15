@@ -262,7 +262,7 @@ else{
             <div class="form-group">
                 <span class="glyphicon glyphicon-lock"></span>
                 <label class="control-label">Confirme contraseña </label>
-                <input type="password" class="form-control input-box" name="password_confirm" id="password_confirm"/>               
+                <input type="password" class="form-control input-box" name="password_confirm" id="claveRegConfirm"/>               
             </div>
             <div class="form-group">
                 <div id="respuestaReg"></div>

@@ -20,7 +20,7 @@
     text-align: left;
 }
 
-#correoReg, #claveReg{
+#correoReg, #claveReg, #claveRegConfirm{
     height:  45px;
     font-size: larger;
 }
