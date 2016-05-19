@@ -15,11 +15,16 @@
                 <input type="text" class="form-control" name="monto" id="monto" disabled="disabled" value=''/>                
             </div>
             <div class="form-group">
-          <label class="control-label">No de Factura: </label>
+          
                 <input type="text" class="form-control" name="factura" id="factura"/>               
             </div>
-            
-                <div class="form-group">
+        <div class="form-group">
+            <label class="control-label">Califique el servicio:  </label>
+            <div id="stars-default"><input type=hidden name="rating"/></div>
+
+            <div id="calificacion">Sin evaluar</div>
+        </div>
+        <div class="form-group">
           <button type="submit" class="btn btn-primary" name="btnCrearCat" id="btnCrearCat">Aceptar</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
         </div>
