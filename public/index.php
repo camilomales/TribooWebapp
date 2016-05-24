@@ -2,7 +2,7 @@
 session_start();
 require_once "../controladores/validarPromo.php";
 if(isset($_SESSION['sesion'])&& $_SESSION['sesion']!=''){
-    header("location:triboo.php");
+    header("location:nuevoFormulario.php");
 }
 else{
 ?>
@@ -85,7 +85,7 @@ else{
 
 <!-- CUSTOM STYLESHEETS -->
 <link rel="stylesheet" href="css/styles.css">
-<link rel="stylesheet" href="css/estilostriboo.css">
+
 <!-- RESPONSIVE FIXES -->
 <link rel="stylesheet" href="css/responsive.css">
 
@@ -209,13 +209,25 @@ else{
 						<!-- NUEVO CODIGO -->
 						<!-- Ingreso a registro de usuarios -->
 						<input type="email" name="id-email" id="id-email"  placeholder="Tu e-mail" class="form-control input-box">
-						<input type="password" name="id-password" id="id-password" placeholder="Tu contraseña" class="form-control input-box">
+						<input type="password" name="id-password" id="id-password" placeholder="Tu contraseña" class="form-control input-box"><br>
+						
 						<button type="submit" class="btn standard-button" id="rf-submit" name="submit">INGRESAR</button><br>
-                                                <i style="color:#ffffff">No te han invitado aún, <a id="linkRegistro" data-toggle="modal" data-target="#modal-registrarse">reg&iacute;strate!</a></i>
+						
+						<!--cesion con facebook-->
+								
+ 						<i style="color:#ffffff">login con facebook</i>
+						  	 <a class="social_facebook_square" href="fbconfig.php"></a><br><br>
+						 
+							<!--cierre de cesion-->    	
+
+						
+						<i style="color:#ffffff">No te han invitado aún, <a href="#" target="_self">ent&eacute;rate!</a></i>
+
+						  
 						
 					</form></br>
-					<div class="fb-like" data-href="https://www.facebook.com/ideastriboo" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div>
-					<!--</br><a href="https://twitter.com/ideastriboo" class="twitter-follow-button" data-show-count="false" data-lang="es">Seguir a @ideastriboo</a>-->
+					<div class="fb-like" data-href="https://www.facebook.com/ideastriboo" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div></br>
+					</br><a href="https://twitter.com/ideastriboo" class="twitter-follow-button" data-show-count="false" data-lang="es">Seguir a @ideastriboo</a>
  
 			</div>		     
 
@@ -240,43 +252,7 @@ else{
 </div>
 </header>
 
-<div class="modal fade" id="modal-registrarse" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h3 class="modal-title" id="myModalLabel"><span class="strong colored-text">Registrarse en Triboo </span> </h3>
-      </div>
-      <div class="modal-body">
-          <form  id="formRegistro" name="formRegistro" method="post" class="validator-form">
-            <div class="form-group">
-                <span class="glyphicon glyphicon-envelope"></span>                
-                <label class="control-label">Correo </label>
-                <input type="email" class="form-control input-box" required name="correoReg" id="correoReg"/>               
-            </div>
-            <div class="form-group">
-                <span class="glyphicon glyphicon-lock"></span>
-                <label class="control-label">Contraseña </label>
-                <input type="password" class="form-control input-box" required name="claveReg" id="claveReg"/>               
-            </div>
-            <div class="form-group">
-                <span class="glyphicon glyphicon-lock"></span>
-                <label class="control-label">Confirme contraseña </label>
-                <input type="password" class="form-control input-box" name="password_confirm" id="claveRegConfirm"/>               
-            </div>
-            <div class="form-group">
-                <div id="respuestaReg"></div>
-            </div>
-            <div class="btn-group">
-                <button type="submit" class="btn standard-button btn-sm" id="btnRegistrar">
-                   Registrarse
-                </button>
-            </div>
-          </form>
-      </div>
-    </div>
-  </div>
-</div>
+
 <!-- =========================
      SCRIPTS   
 ============================== -->
@@ -296,8 +272,7 @@ jQuery(window).load(function() {
 })
 
 </script>
-<script src="js/jquery.validate.js"></script>
-<script src="js/registrarUsuario.js"></script>
+
 <script src="js/bootstrap.min.js"></script>
 <script src="js/retina-1.1.0.min.js"></script>
 <script src="js/smoothscroll.js"></script>
