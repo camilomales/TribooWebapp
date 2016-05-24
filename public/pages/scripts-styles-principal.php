@@ -1,5 +1,5 @@
 <link rel="shortcut icon" href="images/favicon.png">
-<link href="css/estilostriboo.css" rel="stylesheet">
+
 <!-- Bootstrap CSS -->    
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <!-- bootstrap theme 
@@ -9,6 +9,7 @@
 <link href="css/elegant-icons-style.css" rel="stylesheet" />
 
 <link href="css/style2.css" rel="stylesheet">
+<link href="css/estilostriboo.css" rel="stylesheet">
 <!--<link href="css/style-responsive3.css" rel="stylesheet" />-->
 <link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>

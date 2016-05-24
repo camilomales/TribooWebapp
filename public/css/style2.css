@@ -295,7 +295,7 @@ table tr th { color: #688a7e;}
 
 #sidebar {
     width: 250px; 
-    height: 50%;
+    
     position: fixed;
     z-index: 1;
     background: white;

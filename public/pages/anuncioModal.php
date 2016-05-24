@@ -15,11 +15,11 @@
                 <input type="text" class="form-control" name="monto" id="monto" disabled="disabled" value=''/>                
             </div>
             <div class="form-group">
-          
+                <label class="control-label">Dirección:  </label>
                 <input type="text" class="form-control" name="factura" id="factura"/>               
             </div>
         <div class="form-group">
-            <label class="control-label">Califique el servicio:  </label>
+            <label class="control-label">Califica el servicio:  </label>
             <div id="stars-default"><input type=hidden name="rating"/></div>
 
             <div id="calificacion">Sin evaluar</div>

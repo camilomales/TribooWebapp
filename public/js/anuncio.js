@@ -101,7 +101,7 @@ $(document).ready(function(){
         
     });
     $("#btnForm").click(function(){
-        $("#form-crear-anun").validate();
+        
         $("#anuncioParte1").show();
         $("#btnForm").hide();
         $("#btnInfoExtra").show();

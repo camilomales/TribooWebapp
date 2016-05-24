@@ -39,6 +39,14 @@
                     </div>  
                 </a>                      
             </li>
+            <li class="active">
+                <a href="misCreditos.php" class="">
+                    <div class="verPromos">
+                      <i class="icon_document_alt"></i>
+                      <span>Mis Creditos</span>                          
+                    </div>  
+                </a>                      
+            </li>
 
         </ul>
         <!-- sidebar menu end-->

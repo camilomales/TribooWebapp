@@ -36,25 +36,8 @@ $idUsuario = $_SESSION['sesion'];
         <section class="wrapper">
              
             <div class="row">
-                <script>
                 
-                //the $(document).ready() function is down at the bottom
 
-
-$(document).ready(function(){
-
-	
-	
-});
-</script>
-<form method="POST" action="test.php">
-
-
-		<div id="stars-default"><input type=hidden name="rating"/></div>
-	
-    <div id="calificacion">Sin evaluar</div>
-    <input type="submit" >
-</form>
                 <?php
                 //$hoy = date("Y-m-d H:i:s");
                 //echo $hoy;
