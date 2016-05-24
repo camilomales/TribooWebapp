@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-05-2016 a las 01:53:57
+-- Tiempo de generación: 24-05-2016 a las 04:15:16
 -- Versión del servidor: 5.6.25
 -- Versión de PHP: 5.5.27
 
@@ -88,19 +88,22 @@ CREATE TABLE IF NOT EXISTS `interacciones` (
   `monto` double NOT NULL,
   `creditos` double NOT NULL,
   `confirmado` bit(1) NOT NULL,
+  `calificacion` int(1) NOT NULL,
   `codValidacion` varchar(10) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `interacciones`
 --
 
-INSERT INTO `interacciones` (`idInteraccion`, `idUsuario`, `idMensaje`, `latitud`, `longitud`, `fechaInteraccion`, `tipoInteraccion`, `monto`, `creditos`, `confirmado`, `codValidacion`) VALUES
-(27, 1, 2, 7651651, 75616515, '2015-11-19 17:55:45', 1, 40000, 0, b'0', '2342'),
-(28, 1, 12, 7651651, 75616515, '2015-11-19 17:57:05', 1, 150000, 0, b'0', '3324'),
-(29, 1, 9, 7651651, 75616515, '2015-11-19 17:57:40', 1, 40000, 0, b'0', '232'),
-(30, 1, 1, 7651651, 75616515, '2015-12-03 16:57:21', 1, 6000, 0, b'0', '465'),
-(31, 1, 13, 7651651, 75616515, '2015-12-03 18:08:41', 1, 75000, 0, b'0', '48946');
+INSERT INTO `interacciones` (`idInteraccion`, `idUsuario`, `idMensaje`, `latitud`, `longitud`, `fechaInteraccion`, `tipoInteraccion`, `monto`, `creditos`, `confirmado`, `calificacion`, `codValidacion`) VALUES
+(27, 1, 2, 7651651, 75616515, '2015-11-19 17:55:45', 1, 40000, 0, b'0', 0, '2342'),
+(28, 1, 12, 7651651, 75616515, '2015-11-19 17:57:05', 1, 150000, 0, b'0', 0, '3324'),
+(29, 1, 9, 7651651, 75616515, '2015-11-19 17:57:40', 1, 40000, 0, b'0', 0, '232'),
+(30, 1, 1, 7651651, 75616515, '2015-12-03 16:57:21', 1, 6000, 0, b'0', 0, '465'),
+(31, 1, 13, 7651651, 75616515, '2015-12-03 18:08:41', 1, 75000, 0, b'0', 0, '48946'),
+(32, 4, 1, 7651651, 75616515, '2016-05-19 06:39:14', 1, 6000, 0, b'1', 3, '89456'),
+(33, 22, 2, 7651651, 75616515, '2016-05-21 00:29:25', 1, 40000, 0, b'1', 4, 'centro');
 
 -- --------------------------------------------------------
 
@@ -112,7 +115,7 @@ CREATE TABLE IF NOT EXISTS `intereses` (
   `idInteres` int(11) NOT NULL,
   `idUsuario` int(11) NOT NULL,
   `idCategoria` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=147 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=150 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `intereses`
@@ -134,10 +137,10 @@ INSERT INTO `intereses` (`idInteres`, `idUsuario`, `idCategoria`) VALUES
 (136, 4, 1),
 (137, 4, 2),
 (140, 4, 25),
-(143, 4, 50),
 (144, 4, 32),
 (145, 4, 4),
-(146, 4, 3);
+(148, 4, 3),
+(149, 4, 50);
 
 -- --------------------------------------------------------
 
@@ -200,7 +203,7 @@ CREATE TABLE IF NOT EXISTS `mensajes` (
   `aceptaCreditos` bit(1) NOT NULL,
   `idLista` int(11) NOT NULL,
   `idAnunciante` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `mensajes`
@@ -223,7 +226,8 @@ INSERT INTO `mensajes` (`idMensaje`, `fechaCreacion`, `descripcion`, `palabrasCl
 (67, '2016-05-07 01:06:55', 'dsfgfdsg', 'dfsgsdfg', 4.525, '2016-05-06', '2016-05-06', '2016-05-06 00:00:00', '2016-05-06 23:59:00', '', '', '', b'0', 1, b'1', 1, 'images/screenshots/2016-05-07010655.png', b'0', 10, 3),
 (68, '2016-05-07 01:07:49', 'dfasfd', 'asfafds', 324.423, '2016-05-06', '2016-05-06', '2016-05-06 00:00:00', '2016-05-06 23:59:00', '', '', '', b'0', 2, b'1', 1, 'images/screenshots/2016-05-07010749.png', b'0', 13, 3),
 (69, '2016-05-07 01:24:50', 'ddddd', 'ddddd', 43.242, '2016-05-06', '2016-05-06', '2016-05-06 00:00:00', '2016-05-06 23:59:00', '', '', '', b'0', 1, b'1', 1, 'images/screenshots/2016-05-07012450.png', b'0', 12, 3),
-(70, '2016-05-07 01:25:56', 'favicon', 'sdfadf', 3.232, '2016-05-06', '2016-05-06', '2016-05-06 00:00:00', '2016-05-06 23:59:00', '', '', '', b'0', 1, b'1', 1, 'images/screenshots/2016-05-07012556.png', b'0', 9, 3);
+(70, '2016-05-07 01:25:56', 'favicon', 'sdfadf', 3.232, '2016-05-06', '2016-05-06', '2016-05-06 00:00:00', '2016-05-06 23:59:00', '', '', '', b'0', 1, b'1', 1, 'images/screenshots/2016-05-07012556.png', b'0', 9, 3),
+(71, '2016-05-18 02:18:27', 'kasÃ±ldf', 'ksdlÃ±kfalÃ±', 556, '2016-05-17', '2016-05-17', '2016-05-17 00:00:00', '2016-05-17 23:59:00', '', '', '', b'0', 1, b'1', 1, 'images/screenshots/2016-05-18021827.jpg', b'0', 2, 3);
 
 -- --------------------------------------------------------
 
@@ -616,21 +620,24 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `nombres` varchar(100) NOT NULL,
   `apellidos` varchar(100) NOT NULL,
   `feNacimiento` date DEFAULT NULL,
-  `sexo` bit(1) DEFAULT NULL,
+  `sexo` int(1) DEFAULT NULL,
   `user` varchar(50) DEFAULT NULL,
   `web` varchar(100) DEFAULT NULL,
   `acerca` varchar(144) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
 INSERT INTO `usuarios` (`idUsuario`, `mail`, `pws`, `nombres`, `apellidos`, `feNacimiento`, `sexo`, `user`, `web`, `acerca`) VALUES
-(1, 'mail@mail.com', '81dc9bdb52', 'Camilo', 'Males', '2015-12-17', b'0', 'camilom', 'No', 'No'),
-(2, 'andres@gmail.com', '81dc9bdb52', 'andres', 'Burbano', '2014-10-29', b'0', 'andres', 'No', 'No'),
-(3, 'prueba@gmail.com', '81dc9bdb52', 'prueba', 'prue', '1993-02-12', b'0', 'pru', 'No', 'no'),
-(4, 'camilomales@hotmail.com', '0aa0b6b320', 'Camilo', 'Males', '1993-03-01', b'0', 'camilom', 'No', 'no');
+(1, 'mail@mail.com', '81dc9bdb52', 'Camilo', 'Males', '2015-12-17', 1, 'camilom', 'No', 'No'),
+(2, 'andres@gmail.com', '81dc9bdb52', 'andres', 'Burbano', '2014-10-29', 1, 'andres', 'No', 'No'),
+(3, 'prueba@gmail.com', '81dc9bdb52', 'prueba', 'prue', '1993-02-12', 0, 'pru', 'No', 'no'),
+(4, 'camilomales@hotmail.com', '827ccb0eea', 'Camilo', 'Males', '1993-09-16', 1, 'camilom', 'triboo.co', 'ing. sistemas'),
+(20, 'camilomales93@gmail.com', '827ccb0eea', '', '', NULL, NULL, NULL, NULL, NULL),
+(21, 'dfsjlk@gmail.com', '827ccb0eea', '', '', NULL, NULL, NULL, NULL, NULL),
+(22, 'home@hotmail.com', '827ccb0eea', 'camilo', 'males', NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -798,12 +805,12 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `interacciones`
 --
 ALTER TABLE `interacciones`
-  MODIFY `idInteraccion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=33;
+  MODIFY `idInteraccion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=34;
 --
 -- AUTO_INCREMENT de la tabla `intereses`
 --
 ALTER TABLE `intereses`
-  MODIFY `idInteres` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=147;
+  MODIFY `idInteres` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=150;
 --
 -- AUTO_INCREMENT de la tabla `listas`
 --
@@ -813,7 +820,7 @@ ALTER TABLE `listas`
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `idMensaje` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=71;
+  MODIFY `idMensaje` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=72;
 --
 -- AUTO_INCREMENT de la tabla `niveles`
 --
@@ -833,7 +840,7 @@ ALTER TABLE `ubicaciones`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT de la tabla `validaciones`
 --
