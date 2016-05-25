@@ -16,14 +16,18 @@ class usuariosModelo extends Modelo{
 		$sql="SELECT * FROM usuarios where mail='$idmail' and pws='$idpws'";	
 		$result = $this->_db->query($sql);
 		$registros = $result->fetch_array(MYSQLI_ASSOC);
-		$tomar= $registros[0];
-		$_SESSION["user"]=$tomar;
+		
+		return $registros;
+	}
+	public function verDatosUsuario($idUsuario){
+		$sql="SELECT * FROM usuarios where idUsuario=".$idUsuario;	
+		$result = $this->_db->query($sql); //devuelve true o false		
+		$registros = $result->fetch_array(MYSQLI_ASSOC);
 		return $registros;
 	}
 	
-	
-	public function modificarUsuario($idUsuario, $nombres, $apellidos, $feNacimiento, $sexo, $user, $pws, $web, $acerca){
-		$sql="UPDATE usuarios SET pws='$pws', nombres='$nombres', apellidos='$apellidos', feNacimiento='$feNacimiento', sexo='$sexo', user='$user', web='$web', acerca='$acerca' WHERE idUsuario='$idUsuario'";
+	public function modificarUsuario($idUsuario, $nombres, $apellidos, $feNacimiento, $sexo, $user, $psw, $web, $acerca){
+		$sql="UPDATE usuarios SET pws='$psw', nombres='$nombres', apellidos='$apellidos', feNacimiento='$feNacimiento', sexo='$sexo', user='$user', web='$web', acerca='$acerca' WHERE idUsuario='$idUsuario'";
 		$result = $this->_db->query($sql);
 		if ($this->_db->error ){
 		   echo "Error al actualizar el registro: ".$this->_db->error;
@@ -31,9 +35,10 @@ class usuariosModelo extends Modelo{
 		   return;		   
 		}
 		else{
-			$registro=1;
+                    $registro=1;
+                    return $registro;
 		}
-		return $registro;			
+					
 	}
 
 	public function llevarDatos($idUsuario){
@@ -99,13 +104,21 @@ class usuariosModelo extends Modelo{
 		   return;		   
 		}				
 	}
-	public function insertarUsuario($mail, $pws){
+	public function registrarUsuario($mail, $pws){
 		$sql="INSERT INTO usuarios (mail, pws) VALUES ('$mail', '$pws') ";
 		$result = $this->_db->query($sql);
 		if ($this->_db->error ){
 		   echo "Error al actualizar el registro: ".$this->_db->error;
 		   return;		   
-		}				
+		}  else {
+                    return 1;
+                }				
 	}
+        public function comprobarEmail($mail){
+                $sql="SELECT COUNT(*) as contar FROM usuarios WHERE mail = '".$mail."'";
+                $result = $this->_db->query($sql);
+                $registros = $result->fetch_array(MYSQLI_ASSOC);
+                return $registros;
+        }
 }
 ?>

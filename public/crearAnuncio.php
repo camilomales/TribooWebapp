@@ -1,5 +1,6 @@
-<?php
+<?php session_start();
 require_once '../controladores/crearAnuncioControlador.php';
+
 
 $idUsuario = 1; //despues cambiar por el de sesion(cuando ya se arregle ese problema)
 $idAnunciante = 3; //preguntar sobre la tabla idAnunciante o vericar su analisis relacional
@@ -10,7 +11,8 @@ if($_GET){
         isset($_GET['palabrasClave']) && !empty($_GET['palabrasClave'])&&
         isset($_GET['valor']) && !empty($_GET['valor']) &&
         isset($_GET['idTipoMensaje']) && !empty($_GET['idTipoMensaje']) &&
-        isset($_GET['idLista']) && !empty($_GET['idLista']) &&
+        isset($_GET['idLista']) && !empty($_GET['idLista']) &&        
+        isset($_GET['idAnunciante']) && !empty($_GET['idAnunciante']) &&    
         isset($_FILES['rutaImg']['name']) && !empty($_FILES['rutaImg']['name']) 
             
     ){
@@ -23,7 +25,7 @@ if($_GET){
         $posSepDer = strpos($derecha, '|');
         
         $hrPubInicio = str_replace("|", "", $izquierda);
-        $hrPubFin = str_replace("|", "", $derecha);
+        $hrPubFin = trim(str_replace("|", "", $derecha));
         $fechaInicio = substr($izquierda, 0, ($posSepIzq-1));
         $fechaFin = substr($derecha, 0, ($posSepDer-1));
         $descripcion = $_GET['descripcion'];
@@ -47,27 +49,34 @@ if($_GET){
             //if($cumpleanos==0)$cumpleanos=null;
             if($linkMasInfo=='')$linkMasInfo=null;
             
-            $formatoImg = array('.jpg', '.png', 'jpeg');
+            $formatoImg = array('.jpg', '.png', '.jpeg','.gif');
             $archivoNom =  $_FILES['rutaImg']['name'];
             $archivoTemp = $_FILES['rutaImg']['tmp_name'];
             $ruta = "./images/screenshots/";
             $extension = substr($archivoNom, strrpos($archivoNom, '.'));
             if(in_array($extension, $formatoImg)){
                 $dateUnica=date('Y-m-dHis');
-                $archivoNom = $dateUnica.$archivoNom;
+                $archivoNom = $dateUnica.$extension;
                 if(move_uploaded_file($archivoTemp, $ruta.$archivoNom)){
-                    $rutaImg = "/images/screenshots/".$fechaCreacion.$archivoNom;
+                    $rutaImg = "images/screenshots/".$dateUnica.$extension;
                     $anuncio = crearAnuncio($fechaCreacion, $descripcion, $palabrasClave, $valor, $fechaInicio, $fechaFin, $hrPubInicio, $hrPubFin, $linkMasInfo, $sexo, $edad, $cumpleanos, $idTipoMensaje, $idUsuario, $rutaImg, $idLista, $idAnunciante);
                     if($anuncio[0]==1){
-                        echo $anuncio[1];
+                        $_SESSION['idAnuncio']=$anuncio[1];
+                        
                         ?>
                         <span id="anuncioSuccess">Anuncio creado exitosamente</span> <br>     
                         <img class="imgSubida" src="<?=$ruta.$archivoNom;?>"/>
+                        
                         <?php
                     }
                 
                 }else{
-                    echo "Error al subir el archivo";
+                    ?>
+                        <script>alert("Error al subir el archivo"");
+                            location.reload();
+                        </script>
+                    <?php
+                    
                 }
             }else{
                 echo "Formato de archivo no permitido";
@@ -78,9 +87,15 @@ if($_GET){
             
         }
     }else{
+        ?>
+            <script>alert("Dejaste datos sin llenar. Revisa los campos antes de continuar");
+                location.reload();
+            </script>
+        <?php
         echo "Revise los datos";
     }
 }  else {
     echo "Error en envio de datos";
 }
+
 ?>

@@ -1,3 +1,20 @@
+var hoy = new Date()
+hoy = formatoFecha(hoy);
+
+function formatoFecha(date){        
+    var dd = date.getDate();
+    var mm = date.getMonth()+1; //hoy es 0!
+    var yyyy = date.getFullYear();
+    if(dd<10) {
+        dd='0'+dd
+    } 
+    if(mm<10) {
+        mm='0'+mm
+    } 
+    date = yyyy+'-'+mm+'-'+dd;
+    return date;
+}
+
 $(function() {
     $('input[name="daterange"]').daterangepicker({
         timePicker: true,
@@ -32,7 +49,7 @@ $(function() {
             cancelLabel: "Cancelar",
             
         },
-         minDate: "2016-04-05"
+         minDate: hoy
         
     });
 }); 
@@ -79,8 +96,12 @@ $(document).ready(function(){
         $("#ajax").hide();
         $("#btnGuardar").hide();
         $("#btnUbicacion").hide();
+        obs = $(this);
+        idButton = obs.data("but");
+        
     });
     $("#btnForm").click(function(){
+        
         $("#anuncioParte1").show();
         $("#btnForm").hide();
         $("#btnInfoExtra").show();
@@ -90,47 +111,77 @@ $(document).ready(function(){
         $("#btnGuardar").hide();
         $("#btnUbicacion").hide();
     });
-    $("#btnContinuar").click(function(){
-        $("#btnCanc").hide();
-        $("#anuncioParte1").hide();
-        $("#ajax").show();
-        $("#anuncioParte2").hide();
-        cargarmapa();
-        $("#btnForm").hide();
-        $("#btnContinuar").hide();
-        $("#btnInfoExtra").hide();
-        $("#btnGuardar").show();
-        $("#btnUbicacion").show();
-        ajaxmapa();
-        var formulario = $('#form-crear-anun');			
-        var datos = formulario.serialize();
-        var archivos = new FormData();	
-        var url = 'crearAnuncio.php';			
-        for (var i = 0; i < (formulario.find('input[type=file]').length); i++) { 
-            archivos.append((formulario.find('input[type="file"]:eq('+i+')').attr("name")),((formulario.find('input[type="file"]:eq('+i+')')[0]).files[0]));
-        }				
-        $.ajax({
-            url: url+'?'+datos,
-            type: 'POST',
-            contentType: false, 
-            data: archivos,
-            processData:false,
-            beforeSend: function () {                
-                    $("#div-respuesta").html("Enviando, espere por favor...");                    
-            },
-            success:  function (data) {
-                    $("#div-respuesta").html(data);
-            }
-        });
-    });
+    $("#form-crear-anun").validate({
+         submitHandler: function(form) {
+            $("#btnCanc").hide();
+            $("#anuncioParte1").hide();
+            $("#ajax").show();
+            $("#anuncioParte2").hide();
+            cargarmapa();
+            $("#btnForm").hide();
+            $("#btnContinuar").hide();
+            $("#btnInfoExtra").hide();
+            $("#btnGuardar").show();
+            $("#btnUbicacion").show();
+        
+            var formulario = $('#form-crear-anun');			
+            var datos = formulario.serialize();
+            var archivos = new FormData();	
+            var url = 'crearAnuncio.php';			
+            for (var i = 0; i < (formulario.find('input[type=file]').length); i++) { 
+                archivos.append((formulario.find('input[type="file"]:eq('+i+')').attr("name")),((formulario.find('input[type="file"]:eq('+i+')')[0]).files[0]));
+            }				
+            $.ajax({
+                url: url+'?'+datos,
+                type: 'POST',
+                contentType: false, 
+                data: archivos,
+                processData:false,
+                beforeSend: function () {                
+                        $("#div-respuesta").html("Enviando, espere por favor...");                    
+                },
+                success:  function (data) {
+                        $("#div-respuesta").html(data);
+                }
+            });
+            ajaxmapa();
+         }
+     });
+    
     $("#btnUbicacion").click(function(){
-        alert("ubicacion guardada");
+        tipo = 2;
+        ajaxUbicacion(tipo);
         ajaxmapa();
     });
     
+   function ajaxUbicacion(tipo){
+        cx = $("#cx").val();
+        cy = $("#cy").val();
+        direccion = $("#direccion").val();
+        idMensaje = $("#idMensaje").val();
+        if(tipo == 1){
+            data = 'cx='+cx+'&cy='+cy+'&direccion='+direccion+'&idMensaje='+idMensaje;
+        }
+        if(tipo == 2){
+            data = 'cx='+cx+'&cy='+cy+'&direccion='+direccion+'&idMensaje='+idMensaje+'&tipo='+tipo;
+        }            
+        $.ajax({
+            data:  data,
+            url:   'agregarUbicacion.php',
+            type:  'post',
+
+            success:  function (response) {
+                    $("#div-agr-ubi").html(response);
+
+            }
+        });
+        
+    }
+    
     $("#btnGuardar").click(function(){
-        alert("Anuncio y ubicación creado exitosamente");
-        location = "misMomentos.php";
+        tipo = 1;
+        ajaxUbicacion(tipo);
+        
     });
     $("#btn-anuncio").click(function(){
         

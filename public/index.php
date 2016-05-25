@@ -209,9 +209,21 @@ else{
 						<!-- NUEVO CODIGO -->
 						<!-- Ingreso a registro de usuarios -->
 						<input type="email" name="id-email" id="id-email"  placeholder="Tu e-mail" class="form-control input-box">
-						<input type="password" name="id-password" id="id-password" placeholder="Tu contraseña" class="form-control input-box">
+						<input type="password" name="id-password" id="id-password" placeholder="Tu contraseña" class="form-control input-box"><br>
+						
 						<button type="submit" class="btn standard-button" id="rf-submit" name="submit">INGRESAR</button><br>
+						
+						<!--cesion con facebook-->
+								
+ 						<i style="color:#ffffff">login con facebook</i>
+						  	 <a class="social_facebook_square" href="fbconfig.php"></a><br><br>
+						 
+							<!--cierre de cesion-->    	
+
+						
 						<i style="color:#ffffff">No te han invitado aún, <a href="#" target="_self">ent&eacute;rate!</a></i>
+
+						  
 						
 					</form></br>
 					<div class="fb-like" data-href="https://www.facebook.com/ideastriboo" data-layout="box_count" data-action="like" data-show-faces="false" data-share="true"></div></br>

@@ -5,3 +5,31 @@
     margin-left: 4%;
     color: #29BF1E;
 }
+.error{
+    color:red;
+}
+
+.item-menu:hover{
+    cursor:pointer;
+}
+
+#linkRegistro{
+    cursor:pointer;
+}
+.modal-body{
+    text-align: left;
+}
+
+#correoReg, #claveReg, #claveRegConfirm{
+    height:  45px;
+    font-size: larger;
+}
+
+.img-creditos{
+    width: 150px;
+    
+}
+
+#td-img{
+    width: 150px;
+}

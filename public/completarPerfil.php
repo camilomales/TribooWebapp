@@ -154,10 +154,10 @@ if($_SESSION['sesion']==''){
 								<br><a href='promociones.php'>Ver promociones</a>
 								<br><a href='home.php'>Ir a Home</a><?php } ?><!---->
 						</form>
-						<a href='cerrarSession.php'>Salir</a>
+						<a href='salir.php'>Salir</a>
 					</div>
 				</div>
-			</div><?php for($i=0; $i<=7; $i++){?> </br> <?php }?>
+                        </div></br>
 		</div>
 	</div>
 </header>

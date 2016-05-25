@@ -4,14 +4,15 @@ class ubicacionesModelo extends Modelo{
 	public function __construct(){
 		parent::__construct();
 	}
-	public function agregarUbicacion($direccion,  $municipio, $pais, $latitud, $longitud, $idMensaje){
-		$sql="INSERT INTO ubicaciones (direccion, municipio, pais, latitud, longitud, fechaCreacion, idMensaje) 
-			VALUES ('$direccion', $municipio, '$pais', $latitud, $longitud, CURDATE(), $idMensaje)";	
+	public function agregarUbicacion($direccion, $latitud, $longitud, $fechaCreacion, $idMensaje){
+		$sql="INSERT INTO ubicaciones (direccion, latitud, longitud, fechaCreacion, idMensaje) VALUES ('$direccion', $latitud, $longitud, '$fechaCreacion', $idMensaje)";	
 		$result = $this->_db->query($sql);
 		if ($this->_db->error ){
 		   echo "Error al guardar el registro: ".$this->_db->error;
 		   return;		   
-		}		
+		}else{
+                    return 1;
+                }		
 	}
 	public function modificarUbicacion($direccion, $municipio, $pais, $latitud, $longitud, $idMensaje){
 		$sql="UPDATE ubicaciones SET direccion='$direccion', municipio=$municipio, pais='$pais', latitud=$latitud, 
