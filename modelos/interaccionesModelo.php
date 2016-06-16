@@ -4,9 +4,10 @@ class interaccionesModelo extends Modelo{
 	public function __construct(){
 		parent::__construct();
 	}
-	public function agregarInteraccion($idUsuario, $idMensaje, $fechaInteraccion, $monto, $codValidacion, $calificacion){
-		$sql="INSERT INTO interacciones (idUsuario, idMensaje, latitud, longitud, fechaInteraccion, tipoInteraccion, monto, calificacion, codValidacion) 
-			VALUES ($idUsuario, $idMensaje, 7651651, 75616515, '$fechaInteraccion', 1, $monto, $calificacion, '$codValidacion')";	
+	public function agregarInteraccion($idUsuario, $idMensaje, $fechaInteraccion, $monto, $codValidacion, $calificacion, $calificacionTiempo, $calificacionProducto, $observacion ){
+		$sql="INSERT INTO interacciones (idUsuario, idMensaje, latitud, longitud, fechaInteraccion, tipoInteraccion, monto, calificacion, calificacionTiempo, calificacionProducto, observacion, codValidacion) 
+			VALUES ($idUsuario, $idMensaje, 7651651, 75616515, '$fechaInteraccion', 1, $monto, $calificacion, $calificacionTiempo, $calificacionProducto, '$observacion', '$codValidacion')";
+                echo $sql;
 		$result = $this->_db->query($sql);
 		if ($this->_db->error ){
 		   echo "Error al guardar el registro: ".$this->_db->error;

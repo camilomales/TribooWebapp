@@ -15,15 +15,46 @@
                 <input type="text" class="form-control" name="monto" id="monto" disabled="disabled" value=''/>                
             </div>
             <div class="form-group">
-                <label class="control-label">Dirección:  </label>
+                <label class="control-label">No de Factura:  </label>
                 <input type="text" class="form-control" name="factura" id="factura"/>               
             </div>
         <div class="form-group">
-            <label class="control-label">Califica el servicio:  </label>
-            <div id="stars-default"><input type=hidden name="rating"/></div>
-
-            <div id="calificacion">Sin evaluar</div>
+            
+                <legend align="left">Calificar</legend>    
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="control-label">Servicio:  </label>
+                    <div id="stars-default"><input type=hidden name="rating"/></div>
+                </div>
+                <div class="col-md-4">
+                    <label class="control-label">Tiempo de atención:  </label>
+                    <div id="stars-default2"><input type=hidden name="rating2"/></div>
+                </div>
+                <div class="col-md-4">
+                    <label class="control-label">Producto:  </label>
+                    <div id="stars-default3"><input type=hidden name="rating3"/></div>
+                </div>
+           </div>
+           <div class="row">
+                <div class="col-md-4">
+                    <div id="calificacion">Sin evaluar</div>
+           
+                </div>
+                <div class="col-md-4">
+                     <div id="calificacion2">Sin evaluar</div>
+            
+                </div>
+                <div class="col-md-4">
+                    <div id="calificacion3">Sin evaluar</div>
+                </div>
+           </div>
+               
         </div>
+        <div class="form-group">
+            <label class="control-label">Observaciones: </label>
+            <textarea required name="observaciones" id="observaciones" class="form-control" placeholder="Deja tus observaciones aqui"></textarea>                
+            
+        </div>  
         <div class="form-group">
           <button type="submit" class="btn btn-primary" name="btnCrearCat" id="btnCrearCat">Aceptar</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
