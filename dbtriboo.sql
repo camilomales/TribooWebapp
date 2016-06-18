@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-05-2016 a las 04:15:16
+-- Tiempo de generación: 16-06-2016 a las 19:50:48
 -- Versión del servidor: 5.6.25
 -- Versión de PHP: 5.5.27
 
@@ -89,21 +89,29 @@ CREATE TABLE IF NOT EXISTS `interacciones` (
   `creditos` double NOT NULL,
   `confirmado` bit(1) NOT NULL,
   `calificacion` int(1) NOT NULL,
+  `calificacionTiempo` int(1) NOT NULL,
+  `calificacionProducto` int(1) NOT NULL,
+  `observacion` varchar(120) NOT NULL,
   `codValidacion` varchar(10) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `interacciones`
 --
 
-INSERT INTO `interacciones` (`idInteraccion`, `idUsuario`, `idMensaje`, `latitud`, `longitud`, `fechaInteraccion`, `tipoInteraccion`, `monto`, `creditos`, `confirmado`, `calificacion`, `codValidacion`) VALUES
-(27, 1, 2, 7651651, 75616515, '2015-11-19 17:55:45', 1, 40000, 0, b'0', 0, '2342'),
-(28, 1, 12, 7651651, 75616515, '2015-11-19 17:57:05', 1, 150000, 0, b'0', 0, '3324'),
-(29, 1, 9, 7651651, 75616515, '2015-11-19 17:57:40', 1, 40000, 0, b'0', 0, '232'),
-(30, 1, 1, 7651651, 75616515, '2015-12-03 16:57:21', 1, 6000, 0, b'0', 0, '465'),
-(31, 1, 13, 7651651, 75616515, '2015-12-03 18:08:41', 1, 75000, 0, b'0', 0, '48946'),
-(32, 4, 1, 7651651, 75616515, '2016-05-19 06:39:14', 1, 6000, 0, b'1', 3, '89456'),
-(33, 22, 2, 7651651, 75616515, '2016-05-21 00:29:25', 1, 40000, 0, b'1', 4, 'centro');
+INSERT INTO `interacciones` (`idInteraccion`, `idUsuario`, `idMensaje`, `latitud`, `longitud`, `fechaInteraccion`, `tipoInteraccion`, `monto`, `creditos`, `confirmado`, `calificacion`, `calificacionTiempo`, `calificacionProducto`, `observacion`, `codValidacion`) VALUES
+(27, 1, 2, 7651651, 75616515, '2015-11-19 17:55:45', 1, 40000, 0, b'0', 0, 0, 0, '', '2342'),
+(28, 1, 12, 7651651, 75616515, '2015-11-19 17:57:05', 1, 150000, 0, b'0', 0, 0, 0, '', '3324'),
+(29, 1, 9, 7651651, 75616515, '2015-11-19 17:57:40', 1, 40000, 0, b'0', 0, 0, 0, '', '232'),
+(30, 1, 1, 7651651, 75616515, '2015-12-03 16:57:21', 1, 6000, 0, b'0', 0, 0, 0, '', '465'),
+(31, 1, 13, 7651651, 75616515, '2015-12-03 18:08:41', 1, 75000, 0, b'0', 0, 0, 0, '', '48946'),
+(32, 4, 1, 7651651, 75616515, '2016-05-19 06:39:14', 1, 6000, 0, b'1', 3, 0, 0, '', '89456'),
+(33, 22, 2, 7651651, 75616515, '2016-05-21 00:29:25', 1, 40000, 0, b'1', 4, 0, 0, '', 'centro'),
+(34, 4, 2, 7651651, 75616515, '2016-06-14 00:32:23', 1, 40000, 0, b'0', 3, 0, 0, '', '56543'),
+(37, 4, 3, 7651651, 75616515, '2016-06-16 05:39:26', 1, 5000, 0, b'0', 3, 1, 4, '', '787989'),
+(38, 4, 1, 7651651, 75616515, '2016-06-16 05:40:31', 1, 6000, 0, b'0', 1, 2, 3, '', '68787'),
+(39, 4, 2, 7651651, 75616515, '2016-06-16 05:42:12', 1, 40000, 0, b'0', 0, 0, 0, '', '99999'),
+(40, 4, 1, 7651651, 75616515, '2016-06-16 19:44:03', 1, 6000, 0, b'0', 2, 2, 1, 'kjkjl\r\n', '4948989');
 
 -- --------------------------------------------------------
 
@@ -805,7 +813,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `interacciones`
 --
 ALTER TABLE `interacciones`
-  MODIFY `idInteraccion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=34;
+  MODIFY `idInteraccion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=41;
 --
 -- AUTO_INCREMENT de la tabla `intereses`
 --
