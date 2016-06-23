@@ -1,4 +1,8 @@
-<!--logo start-->
+<?php
+require_once"../controladores/verUsuarioControlador.php";
+$usuario = traerInfo($_SESSION['sesion']);
+?>
+
 <a href="triboo.php" class="logo"><img src="images/logo-triboo.png"></a>
 <!--logo end-->
 <div class="top-nav notification-row">                
@@ -8,9 +12,9 @@
         <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                 <span class="profile-ava">
-                    <img alt="" src="images/avatar1_small.jpg">
+                    <img alt="" src="images/user.png">
                 </span>
-                <span class="username">Carolina Acosta</span>
+                <span class="username"><?=$usuario['nombres']." ".$usuario['apellidos'];?></span>
                 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu extended logout">

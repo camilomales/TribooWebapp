@@ -1,11 +1,11 @@
 <?php
 require_once '../modelos/mensajesModelo.php';
 
-function crearAnuncio($fechaCreacion, $descripcion, $palabrasClave, $valor, $fechaInicio, $fechaFin, $hrPubInicio, $hrPubFin, $linkMasInfo, $sexo, $edad, $cumpleanos, $idTipoMensaje, $idUsuario, $rutaImg, $idLista, $idAnunciante){
+function crearAnuncio($fechaCreacion, $descripcion, $palabrasClave, $evento, $valor, $fechaInicio, $fechaFin, $hrPubInicio, $hrPubFin, $linkMasInfo, $sexo, $edad, $cumpleanos, $idTipoMensaje, $idUsuario, $rutaImg, $idLista, $idAnunciante){
     
     $mensajesModelo = new mensajesModelo();
 
-    $agregarMensaje = $mensajesModelo->agregarMensaje($fechaCreacion, $descripcion, $palabrasClave, $valor, $fechaInicio, $fechaFin, $hrPubInicio, $hrPubFin, $linkMasInfo, $sexo, $edad, $cumpleanos, $idTipoMensaje, $idUsuario, $rutaImg, $idLista, $idAnunciante);
+    $agregarMensaje = $mensajesModelo->agregarMensaje($fechaCreacion, $descripcion, $palabrasClave, $evento, $valor, $fechaInicio, $fechaFin, $hrPubInicio, $hrPubFin, $linkMasInfo, $sexo, $edad, $cumpleanos, $idTipoMensaje, $idUsuario, $rutaImg, $idLista, $idAnunciante);
     return $agregarMensaje;
 }
 /* 

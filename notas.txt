@@ -1,0 +1,12 @@
+En anunciomodal.php para tipo de anuncio
+
+<label class="control-label">Tipo de Anuncio: </label>
+<select class="form-control" required name="idTipoMensaje" id="idTipoMensaje">
+	<option disabled selected>Seleccione</option>
+      	<?php	
+	foreach ($tipoMens as $fila):?>
+        	<option value="<?=$fila['idTipoMensaje']?>"><?=utf8_encode($fila['descripcion'])?></option>
+      	<?php                            
+        endforeach;
+        ?>
+</select>

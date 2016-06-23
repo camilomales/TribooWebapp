@@ -4,8 +4,8 @@ class mensajesModelo extends Modelo{
 	public function __construct(){
 		parent::__construct();
 	}
-	public function agregarMensaje($fechaCreacion, $descripcion, $palabrasClave, $valor, $fechaInicio, $fechaFin, $hrPubInicio, $hrPubFin, $linkMasInfo, $sexo, $edad, $cumpleanos, $idTipoMensaje, $idUsuario, $rutaImg, $idLista, $idAnunciante){
-            $sql = "INSERT INTO mensajes (fechaCreacion, descripcion, palabrasClave, valor, fechaInicio, fechaFin, hrPubInicio, hrPubFin, linkMasInfo, sexo, edad, cumpleanos, idTipoMensaje, activo, idUsuario, rutaImg, idLista, idAnunciante) VALUES ('$fechaCreacion', '$descripcion', '$palabrasClave', '$valor', '$fechaInicio', '$fechaFin', '$hrPubInicio', '$hrPubFin', '$linkMasInfo', '$sexo', '$edad', $cumpleanos, $idTipoMensaje, 1, $idUsuario, '$rutaImg', $idLista, $idAnunciante)";
+	public function agregarMensaje($fechaCreacion, $descripcion, $palabrasClave, $evento, $valor, $fechaInicio, $fechaFin, $hrPubInicio, $hrPubFin, $linkMasInfo, $sexo, $edad, $cumpleanos, $idTipoMensaje, $idUsuario, $rutaImg, $idLista, $idAnunciante){
+            $sql = "INSERT INTO mensajes (fechaCreacion, descripcion, palabrasClave, evento, valor, fechaInicio, fechaFin, hrPubInicio, hrPubFin, linkMasInfo, sexo, edad, cumpleanos, idTipoMensaje, activo, idUsuario, rutaImg, idLista, idAnunciante) VALUES ('$fechaCreacion', '$descripcion', '$palabrasClave', $evento, '$valor', '$fechaInicio', '$fechaFin', '$hrPubInicio', '$hrPubFin', '$linkMasInfo', '$sexo', '$edad', $cumpleanos, $idTipoMensaje, 1, $idUsuario, '$rutaImg', $idLista, $idAnunciante)";
            $result = $this->_db->query($sql);
            if ($this->_db->error ){
               echo "Error al guardar el registro: ".$this->_db->error;

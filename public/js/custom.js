@@ -283,7 +283,7 @@ $("#ingreso").submit(function (e) {
                         $('.subscription-success').html('Bienvenido a Triboo. ').fadeIn(1000); 
                         $('.subscription-success').fadeOut(2000);
                         //var sesion="<?php session_start(); $_SESSION['loginC'] = $iniciar['kk']; echo $_SESSION['loginC'];?>"
-                        window.location.href = "./misMomentos.php";  
+                        window.location.href = "./triboo.php";  
                         //location = "./misMomentos.php";    
                         //window.location.href = "./frmUsuario.php";  
 

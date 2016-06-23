@@ -1,8 +1,11 @@
+<?php
+require_once"../controladores/promocionesActualesControlador.php";
+?>
 <div class="medio">
     <div class="row">
       <div class="toggle-nav">
               <div class="icon-reorder tooltips" data-original-title="Menu" data-placement="bottom"><i class="icon_menu"></i>
-              </div><spam>5 Promociones sin respuesta en esta zona</spam>
+              </div><spam><?=$numeroPromos['cantidad'];?> <?php if($numeroPromos['cantidad']==1){ echo "Promocion Actual";} else{ echo "promociones actuales";}?></spam>
       </div>
     </div>
       
@@ -44,6 +47,14 @@
                     <div class="verPromos">
                       <i class="icon_document_alt"></i>
                       <span>Mis Creditos</span>                          
+                    </div>  
+                </a>                      
+            </li>
+            <li class="active">
+                <a href="misEventos.php" class="">
+                    <div class="verPromos">
+                      <i class="icon_document_alt"></i>
+                      <span>Mis Eventos</span>                          
                     </div>  
                 </a>                      
             </li>

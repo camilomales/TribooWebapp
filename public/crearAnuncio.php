@@ -12,7 +12,8 @@ if($_GET){
         isset($_GET['valor']) && !empty($_GET['valor']) &&
         isset($_GET['idTipoMensaje']) && !empty($_GET['idTipoMensaje']) &&
         isset($_GET['idLista']) && !empty($_GET['idLista']) &&        
-        isset($_GET['idAnunciante']) && !empty($_GET['idAnunciante']) &&    
+        isset($_GET['idAnunciante']) && !empty($_GET['idAnunciante']) &&
+        isset($_GET['evento']) && 
         isset($_FILES['rutaImg']['name']) && !empty($_FILES['rutaImg']['name']) 
             
     ){
@@ -30,6 +31,7 @@ if($_GET){
         $fechaFin = substr($derecha, 0, ($posSepDer-1));
         $descripcion = $_GET['descripcion'];
         $palabrasClave = $_GET['palabrasClave'];
+        $evento = $_GET['evento'];
         $valor = $_GET['valor'];
         $idTipoMensaje = $_GET['idTipoMensaje'];
         $idLista = $_GET['idLista'];
@@ -59,7 +61,7 @@ if($_GET){
                 $archivoNom = $dateUnica.$extension;
                 if(move_uploaded_file($archivoTemp, $ruta.$archivoNom)){
                     $rutaImg = "images/screenshots/".$dateUnica.$extension;
-                    $anuncio = crearAnuncio($fechaCreacion, $descripcion, $palabrasClave, $valor, $fechaInicio, $fechaFin, $hrPubInicio, $hrPubFin, $linkMasInfo, $sexo, $edad, $cumpleanos, $idTipoMensaje, $idUsuario, $rutaImg, $idLista, $idAnunciante);
+                    $anuncio = crearAnuncio($fechaCreacion, $descripcion, $palabrasClave, $evento, $valor, $fechaInicio, $fechaFin, $hrPubInicio, $hrPubFin, $linkMasInfo, $sexo, $edad, $cumpleanos, $idTipoMensaje, $idUsuario, $rutaImg, $idLista, $idAnunciante);
                     if($anuncio[0]==1){
                         $_SESSION['idAnuncio']=$anuncio[1];
                         

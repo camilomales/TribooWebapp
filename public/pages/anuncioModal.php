@@ -8,12 +8,11 @@
       <div class="modal-body">
           <div id="img"></div>       
       <form  id="form-inter" method="post" class="validator-form" action="guardarInteraccion.php">
-        <div class="form-group">
+        
           <input type="hidden" class="form-control" name="idmensaje" id="idmensaje" value=''/>
-          <label class="control-label">Valor: </label>
+          
           <input type="hidden" class="form-control" name="montovlr" id="montovlr" value=''/>                
-                <input type="text" class="form-control" name="monto" id="monto" disabled="disabled" value=''/>                
-            </div>
+                
             <div class="form-group">
                 <label class="control-label">No de Factura:  </label>
                 <input type="text" class="form-control" name="factura" id="factura"/>               
@@ -52,7 +51,7 @@
         </div>
         <div class="form-group">
             <label class="control-label">Observaciones: </label>
-            <textarea required name="observaciones" id="observaciones" class="form-control" placeholder="Deja tus observaciones aqui"></textarea>                
+            <textarea name="observaciones" id="observaciones" class="form-control" placeholder="Deja tus observaciones aqui"></textarea>                
             
         </div>  
         <div class="form-group">
@@ -109,26 +108,21 @@
                         <label class="control-label">Palabras Clave: </label>
                         <textarea required name="palabrasClave" id="palabrasClave" class="form-control" rows="3" placeholder="Ingresa palabras seguidas de una coma (,) que identifiquen tu anuncio"></textarea>                
                     </div>
-                    
+                     <label class="control-label">¿Es un evento?</label><br>
+                    <input type="radio" name="evento" id="cumpleSi" value="1"/>Si<br>    
+                    <input type="radio" name="evento" id="cumpleNo" value="0" checked/>No<br>
                     <div class="form-group">
+                        <!--
                         <label class="control-label">Valor: </label>
                         <div class="input-group">        
                             <span class="input-group-addon">$</span>
                             <input type="text" required name="valor" id="valor" class="form-control" autocomplete="off" placeholder="Ej. 15.000" id="formato-val" onkeyup="formatoValor(this)" onchange="formatValor(this)" >
                             <span class="input-group-addon">.00</span>
-                        </div>
+                        </div>-->
+                        <input type="hidden"  name="valor" value="1000" class="form-control" autocomplete="off" placeholder="Ej. 15.000" id="formato-val"/>
                     </div>
                     <div class="form-group">
-                        <label class="control-label">Tipo de Anuncio: </label>
-                        <select class="form-control" required name="idTipoMensaje" id="idTipoMensaje">
-                            <option disabled selected>Seleccione</option>
-                            <?php
-                            foreach ($tipoMens as $fila):?>
-                            <option value="<?=$fila['idTipoMensaje']?>"><?=utf8_encode($fila['descripcion'])?></option>
-                            <?php                            
-                            endforeach;
-                            ?>
-                        </select>
+                        <input type="hidden" value="1" name="idTipoMensaje" id="idTipoMensaje"/>
                     </div>
                     <div class="form-group">
                         <label class="control-label">Ubiquelo en una lista: </label>
