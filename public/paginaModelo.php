@@ -31,8 +31,10 @@ $idUsuario = $_SESSION['sesion'];
         <?php include './pages/menu.php';?>
         <section id="main-content">
           <section class="wrapper">          
-              
-              AQUÍ TODO EL CONTENIDO DE LA PAGINA
+              <script>
+              cargarMapa();
+              </script>
+              <div id='mapa'></div>
               <?php for($i=0; $i<22; $i++){echo"<br>";}?>
           </section>
         </section>

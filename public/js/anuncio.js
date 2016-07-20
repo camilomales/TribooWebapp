@@ -111,32 +111,12 @@ $(document).ready(function(){
         $("#btnGuardar").hide();
         $("#btnUbicacion").hide();
     });
-    $("#form-crear-anun").validate({
-         submitHandler: function(form) {
-            $("#btnCanc").hide();
-            $("#anuncioParte1").hide();
-            $("#ajax").show();
-            $("#anuncioParte2").hide();
-            cargarmapa();
-            $("#btnForm").hide();
-            $("#btnContinuar").hide();
-            $("#btnInfoExtra").hide();
-            $("#btnGuardar").show();
-            $("#btnUbicacion").show();
-        
-            var formulario = $('#form-crear-anun');			
-            var datos = formulario.serialize();
-            var archivos = new FormData();	
-            var url = 'crearAnuncio.php';			
-            for (var i = 0; i < (formulario.find('input[type=file]').length); i++) { 
-                archivos.append((formulario.find('input[type="file"]:eq('+i+')').attr("name")),((formulario.find('input[type="file"]:eq('+i+')')[0]).files[0]));
-            }				
-            $.ajax({
-                url: url+'?'+datos,
+    $("#btnContinuar").click(function(){
+         
+	      $.ajax({
+                url: 'anuncio.php',
                 type: 'POST',
-                contentType: false, 
-                data: archivos,
-                processData:false,
+
                 beforeSend: function () {                
                         $("#div-respuesta").html("Enviando, espere por favor...");                    
                 },
@@ -144,8 +124,8 @@ $(document).ready(function(){
                         $("#div-respuesta").html(data);
                 }
             });
-            ajaxmapa();
-         }
+            
+         
      });
     
     $("#btnUbicacion").click(function(){

@@ -8,7 +8,7 @@ class tipoMensajeModelo extends Modelo{
 	}
 	
 	public function verTipoMensaje(){
-		$sql='SELECT * FROM tipoMensaje';	
+		$sql='SELECT * FROM tipomensaje';	
 		$result = $this->_db->query($sql);  
 		$tiposM = $result->fetch_all(MYSQLI_ASSOC);  
 		return $tiposM;

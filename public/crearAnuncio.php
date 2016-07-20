@@ -2,8 +2,8 @@
 require_once '../controladores/crearAnuncioControlador.php';
 
 
-$idUsuario = 1; //despues cambiar por el de sesion(cuando ya se arregle ese problema)
-$idAnunciante = 3; //preguntar sobre la tabla idAnunciante o vericar su analisis relacional
+$idUsuario = $_SESSION['sesion']; //despues cambiar por el de sesion(cuando ya se arregle ese problema)
+//$idAnunciante = 3; //preguntar sobre la tabla idAnunciante o vericar su analisis relacional
 if($_GET){
     if(
         isset($_GET['descripcion']) && !empty($_GET['descripcion']) &&
@@ -35,7 +35,7 @@ if($_GET){
         $valor = $_GET['valor'];
         $idTipoMensaje = $_GET['idTipoMensaje'];
         $idLista = $_GET['idLista'];
-        
+        $idAnunciante = $_GET['idAnunciante'];
         if(
             (isset($_GET['sexo'])) ||
             (isset($_GET['edad'])) ||

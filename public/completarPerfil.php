@@ -5,6 +5,11 @@ if($_SESSION['sesion']==''){
 	header("location:index.php");
 }else{
 	$datosUsuario=traerInfo($_SESSION['sesion']);
+	if($datosUsuario['nombres']!='' && $datosUsuario['apellidos']!='' && 
+	($datosUsuario['feNacimiento']!='0000-00-00' || $datosUsuario['feNacimiento']!=NULL) &&
+	$datosUsuario['sexo']!=NULL && $datosUsuario['user']!=NULL && $datosUsuario['web']!=NULL && $datosUsuario['acerca']!=NULL){
+		header("location:triboo.php");
+	}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -48,14 +53,13 @@ if($_SESSION['sesion']==''){
 					<h1 class="intro">
 					¡Bienvenido a  <strong>Triboo</strong>!
 					</h1>
-					<?php if($datosUsuario['acerca']!=NULL){?>
-						</br></br>
-					<?php }else{ ?>
+					<?php if($datosUsuario['acerca']==NULL){?>
+					<br><br>
 						<p class="sub-heading">
 						    Ayudanos completando tu perfil.
 		                    <br>
 						</p>
-					<?php } ?>
+					<?php }?>
 				</div>
 			</div>
 			<div class="row">
@@ -129,7 +133,7 @@ if($_SESSION['sesion']==''){
 							<div id="secWeb" name="secWeb">
 							<center>
 								<label class="form-label">Si tienes página web, danos la dirección</label><br>
-								<input type="text" name="web" id="web" class="form-control input-box"><br><br>								
+								<input type="text" name="web" id="web" class="form-control input-box"><br><br>
 								<input type="submit" value="Siguiente" class="btn standard-button"><br><br>
 							</form>
 							<a href='index.php'>Continuar mas tarde</a><br><br>
@@ -142,19 +146,15 @@ if($_SESSION['sesion']==''){
 							<div id="secAcerca" name="secAcerca">
 							<center>
 								<label class="form-label">Si gustas puedes contarnos algo acerca de ti</label><br>
-								<textarea name="acerca" id="acerca" class="form-control input-box"></textarea><br><br>								
+								<textarea name="acerca" id="acerca" class="form-control input-box"></textarea><br><br>
 								<input type="submit" value="Terminar" class="btn standard-button"><br><br>
 							</form>
 							<a href='index.php'>Continuar mas tarde</a><br><br>
 							</center></div><!--
 							<?php }
-							else{  echo 'Has completado todo tu registro ';?>
-								<br><a href='intereses.php'>Indica tus intereses</a>
-								<br><a href='categorias.php'>Administrar categorias</a>
-								<br><a href='promociones.php'>Ver promociones</a>
-								<br><a href='home.php'>Ir a Home</a><?php } ?><!---->
+							?><!---->
 						</form>
-						<a href='salir.php'>Salir</a>
+						<a href='salir.php'>Salir</a><br><br><br>
 					</div>
 				</div>
                         </div></br>
@@ -164,4 +164,3 @@ if($_SESSION['sesion']==''){
 </body>
 </html>
 <?php }?>
-

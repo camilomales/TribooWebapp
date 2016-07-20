@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-06-2016 a las 19:50:48
+-- Tiempo de generación: 20-07-2016 a las 05:56:42
 -- Versión del servidor: 5.6.25
 -- Versión de PHP: 5.5.27
 
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `interacciones` (
   `calificacionProducto` int(1) NOT NULL,
   `observacion` varchar(120) NOT NULL,
   `codValidacion` varchar(10) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `interacciones`
@@ -111,7 +111,9 @@ INSERT INTO `interacciones` (`idInteraccion`, `idUsuario`, `idMensaje`, `latitud
 (37, 4, 3, 7651651, 75616515, '2016-06-16 05:39:26', 1, 5000, 0, b'0', 3, 1, 4, '', '787989'),
 (38, 4, 1, 7651651, 75616515, '2016-06-16 05:40:31', 1, 6000, 0, b'0', 1, 2, 3, '', '68787'),
 (39, 4, 2, 7651651, 75616515, '2016-06-16 05:42:12', 1, 40000, 0, b'0', 0, 0, 0, '', '99999'),
-(40, 4, 1, 7651651, 75616515, '2016-06-16 19:44:03', 1, 6000, 0, b'0', 2, 2, 1, 'kjkjl\r\n', '4948989');
+(40, 4, 1, 7651651, 75616515, '2016-06-16 19:44:03', 1, 6000, 0, b'0', 2, 2, 1, 'kjkjl\r\n', '4948989'),
+(41, 4, 1, 7651651, 75616515, '2016-06-21 05:00:10', 1, 6000, 0, b'0', 3, 3, 3, 'jkjlkjl', '987879'),
+(42, 4, 4, 7651651, 75616515, '2016-06-23 17:57:44', 1, 5000, 0, b'0', 3, 3, 3, 'no', '484589489');
 
 -- --------------------------------------------------------
 
@@ -123,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `intereses` (
   `idInteres` int(11) NOT NULL,
   `idUsuario` int(11) NOT NULL,
   `idCategoria` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=150 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=157 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `intereses`
@@ -142,13 +144,13 @@ INSERT INTO `intereses` (`idInteres`, `idUsuario`, `idCategoria`) VALUES
 (133, 1, 4),
 (134, 1, 2),
 (135, 1, 1),
-(136, 4, 1),
-(137, 4, 2),
-(140, 4, 25),
-(144, 4, 32),
-(145, 4, 4),
-(148, 4, 3),
-(149, 4, 50);
+(150, 4, 50),
+(151, 4, 32),
+(152, 4, 25),
+(153, 4, 4),
+(154, 4, 3),
+(155, 4, 2),
+(156, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -194,6 +196,7 @@ CREATE TABLE IF NOT EXISTS `mensajes` (
   `idMensaje` int(11) NOT NULL,
   `fechaCreacion` datetime NOT NULL,
   `descripcion` varchar(144) CHARACTER SET utf8 NOT NULL,
+  `evento` bit(1) NOT NULL,
   `palabrasClave` varchar(255) NOT NULL,
   `valor` double NOT NULL,
   `fechaInicio` date NOT NULL,
@@ -211,31 +214,28 @@ CREATE TABLE IF NOT EXISTS `mensajes` (
   `aceptaCreditos` bit(1) NOT NULL,
   `idLista` int(11) NOT NULL,
   `idAnunciante` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `mensajes`
 --
 
-INSERT INTO `mensajes` (`idMensaje`, `fechaCreacion`, `descripcion`, `palabrasClave`, `valor`, `fechaInicio`, `fechaFin`, `hrPubInicio`, `hrPubFin`, `linkMasInfo`, `sexo`, `edad`, `cumpleanos`, `idTipoMensaje`, `activo`, `idUsuario`, `rutaImg`, `aceptaCreditos`, `idLista`, `idAnunciante`) VALUES
-(1, '2015-10-19 09:17:14', 'Por la compra de un Makaco lleva otro gratis ', 'Makaco, promoción, promo del mes, cuentero, accesorios, muñecos, regalos, detalles', 6000, '2015-10-20', '2016-04-18', '2015-10-20 08:26:30', '2016-04-18 18:00:00', NULL, NULL, 'mayores de 15', b'0', 1, b'1', 1, 'images/screenshots/1.jpg', b'0', 8, 3),
-(2, '2015-10-19 08:17:28', 'Aprovecha el 25% de descuento en mantenimiento ', 'computadores, mantenimiento, descuento, software, pc, laptops ', 40000, '2015-10-20', '2015-12-27', '2015-12-09 13:00:00', '2015-12-27 20:00:00', 'www.pc-bit.com', NULL, NULL, b'0', 2, b'1', 1, 'images/screenshots/2.jpg', b'0', 9, 4),
-(3, '2015-10-12 07:00:00', '2 cereales con fruta por $5.000', 'mas fruta, desayunos, fruta, cereal, descuento  ', 5000, '2015-10-12', '2015-12-23', '2015-10-12 09:00:00', '2015-10-30 12:00:00', 'www.masfruta.com.co', NULL, NULL, NULL, 1, b'1', 1, 'images/screenshots/5.jpg', b'0', 10, 3),
-(4, '2015-10-19 10:20:00', 'Reclama una tarjeta con una rosa ', 'chocolate, comidas, promoción, ChocoDeliciosos', 5000, '2015-10-19', '2015-10-25', '2015-10-19 14:00:00', '2015-10-25 15:00:00', NULL, 'F', NULL, NULL, 1, b'1', 1, 'images/screenshots/7.jpg', b'0', 11, 3),
-(5, '2015-10-19 09:30:00', '2 granizados de frutas por $4900', 'promoción, bono, más fruta, helado, granizados, fruta', 4900, '2015-10-19', '2015-10-30', '2015-10-19 13:00:00', '2015-10-30 17:00:00', 'www.masfruta.com.co', NULL, NULL, NULL, 1, b'1', 1, 'images/screenshots/3.jpg', b'0', 12, 4),
-(6, '2015-10-17 00:00:00', 'Recibe una limpieza facial \n', 'gratis, limpieza, Shaya, ropa, accesorios', 100000, '2015-10-19', '2015-10-23', '2015-10-20 08:00:00', '2015-10-20 20:00:00', 'www.facebook.com/shayatienda', 'F', NULL, NULL, 1, b'1', 1, 'images/screenshots/6.jpg', b'0', 13, 4),
-(7, '2015-10-20 09:15:00', '2 aromáticas de frutas por $2.500', 'fruta, promoción, aromáticas, mas fruta, heladería, tardes', 2500, '2015-10-21', '2015-11-06', '2015-10-20 14:00:00', '2015-11-06 17:00:00', 'www.masfruta.com.co', NULL, NULL, NULL, 1, b'1', 1, 'images/screenshots/4.jpg', b'0', 14, 3),
-(8, '2015-10-21 00:00:00', '50% de en camisetas y jeans', 'rebajas, quest, ropa, descuento', 50000, '2015-10-21', '2015-11-18', '2015-10-21 10:00:00', '2015-11-18 12:00:00', 'quest.com.co', 'M', NULL, NULL, 1, b'1', 1, 'images/screenshots/8.jpg', b'0', 6, 3),
-(9, '2015-10-12 15:38:39', '30% de descuento en todo el calzado', 'zapatos, calzado, descuento, calzatodo, ', 40000, '2015-10-13', '2015-11-20', '2015-10-13 08:10:00', '2015-11-20 19:00:00', 'www.calzatodo.com.co', NULL, NULL, NULL, 1, b'1', 1, 'images/screenshots/9.jpg', b'0', 2, 4),
-(10, '2015-10-22 10:00:00', '2 jeans para dama por solo $39.900', 'jeans´store, jeans, dama, oferta', 40000, '2015-10-23', '2015-10-23', '2015-10-23 09:10:00', '2015-10-23 19:00:00', 'www.jeansstore.com', 'F', 'mayores de edad', NULL, 1, b'1', 1, 'images/screenshots/3.jpg', b'0', 13, 3),
-(11, '2015-10-21 08:45:00', 'Promoción sudaderas para hombre desde $75.000', 'sudaderas, hombre, promoción, arena', 75000, '2015-10-21', '2015-10-23', '2015-10-21 13:00:00', '2015-10-23 12:00:00', NULL, 'M', 'mayores de edad', NULL, 1, b'1', 1, 'images/screenshots/1.jpg', b'0', 15, 4),
-(12, '2015-10-19 19:00:00', '15% de descuento en calzado NIKE', 'descuento, S & C STORE, nike, puma, fila, climbingland, calzado, zapatos ', 150000, '2015-10-20', '2015-12-16', '2015-10-20 09:10:00', '2015-12-16 19:00:00', NULL, NULL, NULL, NULL, 1, b'1', 1, 'images/screenshots/12.jpg', b'0', 2, 3),
-(13, '2015-10-26 07:20:00', 'Pantalón casual para hombre desde $74.900', 'sale, precios especiales, pantalón, hombre, unicentro', 75000, '2015-10-26', '2015-10-28', '2015-10-26 09:00:00', '2015-10-28 17:00:00', NULL, 'M', 'mayores de edad', NULL, 1, b'1', 1, 'images/screenshots/2.jpg', b'0', 6, 4),
-(67, '2016-05-07 01:06:55', 'dsfgfdsg', 'dfsgsdfg', 4.525, '2016-05-06', '2016-05-06', '2016-05-06 00:00:00', '2016-05-06 23:59:00', '', '', '', b'0', 1, b'1', 1, 'images/screenshots/2016-05-07010655.png', b'0', 10, 3),
-(68, '2016-05-07 01:07:49', 'dfasfd', 'asfafds', 324.423, '2016-05-06', '2016-05-06', '2016-05-06 00:00:00', '2016-05-06 23:59:00', '', '', '', b'0', 2, b'1', 1, 'images/screenshots/2016-05-07010749.png', b'0', 13, 3),
-(69, '2016-05-07 01:24:50', 'ddddd', 'ddddd', 43.242, '2016-05-06', '2016-05-06', '2016-05-06 00:00:00', '2016-05-06 23:59:00', '', '', '', b'0', 1, b'1', 1, 'images/screenshots/2016-05-07012450.png', b'0', 12, 3),
-(70, '2016-05-07 01:25:56', 'favicon', 'sdfadf', 3.232, '2016-05-06', '2016-05-06', '2016-05-06 00:00:00', '2016-05-06 23:59:00', '', '', '', b'0', 1, b'1', 1, 'images/screenshots/2016-05-07012556.png', b'0', 9, 3),
-(71, '2016-05-18 02:18:27', 'kasÃ±ldf', 'ksdlÃ±kfalÃ±', 556, '2016-05-17', '2016-05-17', '2016-05-17 00:00:00', '2016-05-17 23:59:00', '', '', '', b'0', 1, b'1', 1, 'images/screenshots/2016-05-18021827.jpg', b'0', 2, 3);
+INSERT INTO `mensajes` (`idMensaje`, `fechaCreacion`, `descripcion`, `evento`, `palabrasClave`, `valor`, `fechaInicio`, `fechaFin`, `hrPubInicio`, `hrPubFin`, `linkMasInfo`, `sexo`, `edad`, `cumpleanos`, `idTipoMensaje`, `activo`, `idUsuario`, `rutaImg`, `aceptaCreditos`, `idLista`, `idAnunciante`) VALUES
+(1, '2015-10-19 09:17:14', 'Por la compra de un Makaco lleva otro gratis ', b'0', 'Makaco, promoción, promo del mes, cuentero, accesorios, muñecos, regalos, detalles', 6000, '2015-10-20', '2016-04-18', '2015-10-20 08:26:30', '2016-04-18 18:00:00', NULL, NULL, 'mayores de 15', b'0', 1, b'1', 1, 'images/screenshots/1.jpg', b'0', 8, 3),
+(2, '2015-10-19 08:17:28', 'Aprovecha el 25% de descuento en mantenimiento ', b'0', 'computadores, mantenimiento, descuento, software, pc, laptops ', 40000, '2015-10-20', '2015-12-27', '2015-12-09 13:00:00', '2015-12-27 20:00:00', 'www.pc-bit.com', NULL, NULL, b'0', 2, b'1', 1, 'images/screenshots/2.jpg', b'0', 9, 4),
+(3, '2015-10-12 07:00:00', '2 cereales con fruta por $5.000', b'0', 'mas fruta, desayunos, fruta, cereal, descuento  ', 5000, '2015-10-12', '2015-12-23', '2015-10-12 09:00:00', '2015-10-30 12:00:00', 'www.masfruta.com.co', NULL, NULL, NULL, 1, b'1', 1, 'images/screenshots/5.jpg', b'0', 10, 3),
+(4, '2015-10-19 10:20:00', 'Reclama una tarjeta con una rosa ', b'0', 'chocolate, comidas, promoción, ChocoDeliciosos', 5000, '2015-10-19', '2015-10-25', '2015-10-19 14:00:00', '2015-10-25 15:00:00', NULL, 'F', NULL, NULL, 1, b'1', 1, 'images/screenshots/7.jpg', b'0', 11, 3),
+(5, '2015-10-19 09:30:00', '2 granizados de frutas por $4900', b'0', 'promoción, bono, más fruta, helado, granizados, fruta', 4900, '2015-10-19', '2015-10-30', '2015-10-19 13:00:00', '2015-10-30 17:00:00', 'www.masfruta.com.co', NULL, NULL, NULL, 1, b'1', 1, 'images/screenshots/3.jpg', b'0', 12, 4),
+(6, '2015-10-17 00:00:00', 'Recibe una limpieza facial \n', b'0', 'gratis, limpieza, Shaya, ropa, accesorios', 100000, '2015-10-19', '2015-10-23', '2015-10-20 08:00:00', '2015-10-20 20:00:00', 'www.facebook.com/shayatienda', 'F', NULL, NULL, 1, b'1', 1, 'images/screenshots/6.jpg', b'0', 13, 4),
+(7, '2015-10-20 09:15:00', '2 aromáticas de frutas por $2.500', b'0', 'fruta, promoción, aromáticas, mas fruta, heladería, tardes', 2500, '2015-10-21', '2015-11-06', '2015-10-20 14:00:00', '2015-11-06 17:00:00', 'www.masfruta.com.co', NULL, NULL, NULL, 1, b'1', 1, 'images/screenshots/4.jpg', b'0', 14, 3),
+(8, '2015-10-21 00:00:00', '50% de en camisetas y jeans', b'0', 'rebajas, quest, ropa, descuento', 50000, '2015-10-21', '2015-11-18', '2015-10-21 10:00:00', '2015-11-18 12:00:00', 'quest.com.co', 'M', NULL, NULL, 1, b'1', 1, 'images/screenshots/8.jpg', b'0', 6, 3),
+(9, '2015-10-12 15:38:39', '30% de descuento en todo el calzado', b'0', 'zapatos, calzado, descuento, calzatodo, ', 40000, '2015-10-13', '2015-11-20', '2015-10-13 08:10:00', '2015-11-20 19:00:00', 'www.calzatodo.com.co', NULL, NULL, NULL, 1, b'1', 1, 'images/screenshots/9.jpg', b'0', 2, 4),
+(10, '2015-10-22 10:00:00', '2 jeans para dama por solo $39.900', b'0', 'jeans´store, jeans, dama, oferta', 40000, '2015-10-23', '2015-10-23', '2015-10-23 09:10:00', '2015-10-23 19:00:00', 'www.jeansstore.com', 'F', 'mayores de edad', NULL, 1, b'1', 1, 'images/screenshots/3.jpg', b'0', 13, 3),
+(11, '2015-10-21 08:45:00', 'Promoción sudaderas para hombre desde $75.000', b'0', 'sudaderas, hombre, promoción, arena', 75000, '2015-10-21', '2015-10-23', '2015-10-21 13:00:00', '2015-10-23 12:00:00', NULL, 'M', 'mayores de edad', NULL, 1, b'1', 1, 'images/screenshots/1.jpg', b'0', 15, 4),
+(12, '2015-10-19 19:00:00', '15% de descuento en calzado NIKE', b'0', 'descuento, S & C STORE, nike, puma, fila, climbingland, calzado, zapatos ', 150000, '2015-10-20', '2015-12-16', '2015-10-20 09:10:00', '2015-12-16 19:00:00', NULL, NULL, NULL, NULL, 1, b'1', 1, 'images/screenshots/12.jpg', b'0', 2, 3),
+(13, '2015-10-26 07:20:00', 'Pantalón casual para hombre desde $74.900', b'0', 'sale, precios especiales, pantalón, hombre, unicentro', 75000, '2015-10-26', '2015-10-28', '2015-10-26 09:00:00', '2015-10-28 17:00:00', NULL, 'M', 'mayores de edad', NULL, 1, b'1', 1, 'images/screenshots/2.jpg', b'0', 6, 4),
+(79, '2016-07-11 19:28:56', 'triboo', b'0', 'asffd', 1000, '2016-07-11', '2016-07-11', '2016-07-11 00:00:00', '2016-07-11 23:59:00', '', '', '', b'0', 1, b'1', 4, 'images/screenshots/2016-07-11192856.png', b'0', 9, 4),
+(80, '2016-07-11 22:21:44', 'safasfas', b'0', 'asfdasfd', 1000, '2016-07-11', '2016-07-11', '2016-07-11 00:00:00', '2016-07-11 23:59:00', '', '', '', b'0', 1, b'1', 4, 'images/screenshots/2016-07-11222144.png', b'0', 10, 4);
 
 -- --------------------------------------------------------
 
@@ -603,17 +603,14 @@ CREATE TABLE IF NOT EXISTS `ubicaciones` (
   `longitud` double NOT NULL,
   `fechaCreacion` date NOT NULL,
   `idMensaje` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `ubicaciones`
 --
 
 INSERT INTO `ubicaciones` (`idUbicacion`, `direccion`, `municipio`, `pais`, `latitud`, `longitud`, `fechaCreacion`, `idMensaje`) VALUES
-(26, '34535', NULL, NULL, 1.213726811237202, -77.27508544921875, '2016-05-07', 67),
-(27, 'sfsdf', NULL, NULL, 1.211238278585775, -77.27113723754883, '2016-05-07', 68),
-(28, 'rtetre', NULL, NULL, 1.2037726669387228, -77.28727340698242, '2016-05-07', 69),
-(29, 'ewrr', NULL, NULL, 1.207548381138997, -77.28057861328125, '2016-05-07', 70);
+(37, 'Cra 23 # 45 - 56 San AgustÃ­n', NULL, NULL, 1.2071193229709987, -77.27800369262695, '2016-07-11', 79);
 
 -- --------------------------------------------------------
 
@@ -632,20 +629,22 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `user` varchar(50) DEFAULT NULL,
   `web` varchar(100) DEFAULT NULL,
   `acerca` varchar(144) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
 INSERT INTO `usuarios` (`idUsuario`, `mail`, `pws`, `nombres`, `apellidos`, `feNacimiento`, `sexo`, `user`, `web`, `acerca`) VALUES
-(1, 'mail@mail.com', '81dc9bdb52', 'Camilo', 'Males', '2015-12-17', 1, 'camilom', 'No', 'No'),
+(1, 'mail@mail.com', '827ccb0eea', 'Camilo', 'Males', '2015-12-17', 1, 'camilom', 'No', 'No'),
 (2, 'andres@gmail.com', '81dc9bdb52', 'andres', 'Burbano', '2014-10-29', 1, 'andres', 'No', 'No'),
 (3, 'prueba@gmail.com', '81dc9bdb52', 'prueba', 'prue', '1993-02-12', 0, 'pru', 'No', 'no'),
 (4, 'camilomales@hotmail.com', '827ccb0eea', 'Camilo', 'Males', '1993-09-16', 1, 'camilom', 'triboo.co', 'ing. sistemas'),
 (20, 'camilomales93@gmail.com', '827ccb0eea', '', '', NULL, NULL, NULL, NULL, NULL),
 (21, 'dfsjlk@gmail.com', '827ccb0eea', '', '', NULL, NULL, NULL, NULL, NULL),
-(22, 'home@hotmail.com', '827ccb0eea', 'camilo', 'males', NULL, NULL, NULL, NULL, NULL);
+(22, 'home@hotmail.com', '827ccb0eea', 'camilo', 'males', NULL, NULL, NULL, NULL, NULL),
+(23, 'home2@hotmail.com', '827ccb0eea', 'hola', 'quetal', NULL, NULL, NULL, NULL, NULL),
+(24, 'dani@gmail.com', '827ccb0eea', '', '', NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -813,12 +812,12 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `interacciones`
 --
 ALTER TABLE `interacciones`
-  MODIFY `idInteraccion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=41;
+  MODIFY `idInteraccion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=43;
 --
 -- AUTO_INCREMENT de la tabla `intereses`
 --
 ALTER TABLE `intereses`
-  MODIFY `idInteres` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=150;
+  MODIFY `idInteres` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=157;
 --
 -- AUTO_INCREMENT de la tabla `listas`
 --
@@ -828,7 +827,7 @@ ALTER TABLE `listas`
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `idMensaje` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=72;
+  MODIFY `idMensaje` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=81;
 --
 -- AUTO_INCREMENT de la tabla `niveles`
 --
@@ -843,12 +842,12 @@ ALTER TABLE `tipomensaje`
 -- AUTO_INCREMENT de la tabla `ubicaciones`
 --
 ALTER TABLE `ubicaciones`
-  MODIFY `idUbicacion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
+  MODIFY `idUbicacion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=38;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT de la tabla `validaciones`
 --

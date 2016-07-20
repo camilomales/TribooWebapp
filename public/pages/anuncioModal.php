@@ -85,7 +85,7 @@
             </form>
             
             <!--formulario para mensajes-->
-            <form id="form-crear-anun" method="POST" class="validator-form" action="crearAnuncio.php">
+            <form id="form-crear-anun" method="POST" class="validator-form" >
                 <div id="anuncioParte1">
                     <div class="form-group">
                         <label class="control-label">Cargue su Anuncio</label>
@@ -177,7 +177,7 @@
                 <div id="botones-crear-anun">
                     <div class="form-group">
                         
-                        <button type="submit" class="btn btn-success" name="btnContinuar" id="btnContinuar">Continuar</button>
+                        <button type="button" class="btn btn-success" name="btnContinuar" id="btnContinuar">Continuare</button>
                         <button type="button" class="btn btn-info" name="btnInfoExtra" id="btnInfoExtra" data-but="1">Añadir información extra</button>
                         <button type="button" class="btn btn-info" name="btnForm" id="btnForm" >Volver</button>
                         <button type="button" class="btn btn-default" id="btnCanc" data-dismiss="modal">Cancelar</button>
@@ -189,7 +189,75 @@
     </div>
   </div>
 </div>
+<script>
+var nuevos_marcadores = [];
+    
+    //FUNCION PARA QUITAR MARCADORES DE MAPA
+function limpiar_marcadores(lista){
+    for(i in lista)
+    {
+        //QUITAR MARCADOR DEL MAPA
+        lista[i].setMap(null);
+    }
+}
+function cargarmapa(){ 
+    var punto = new google.maps.LatLng(1.2055747130056993,  -77.28564262390137);
+    var config = {
+        zoom:14,
+        center:punto,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var mapa = new google.maps.Map( $("#mapa")[0], config );
 
+    google.maps.event.addListener(mapa, "click", function(event){
+       var coordenadas = event.latLng.toString();
+
+       coordenadas = coordenadas.replace("(", "");
+       coordenadas = coordenadas.replace(")", "");
+
+       var lista = coordenadas.split(",");
+
+       var direccion = new google.maps.LatLng(lista[0], lista[1]);
+
+       $("#cx").val(lista[0]);
+       $("#cy").val(lista[1]);
+       $("#cx2").val(lista[0]);
+       $("#cy2").val(lista[1]);
+       var marcador = new google.maps.Marker({
+           //titulo:prompt("Titulo del marcador?"),
+           position:direccion,
+           map: mapa, 
+           animation:google.maps.Animation.DROP,
+           draggable:false
+       });
+       //ALMACENAR UN MARCADOR EN EL ARRAY nuevos_marcadores
+       nuevos_marcadores.push(marcador);
+
+       google.maps.event.addListener(marcador, "click", function(){
+
+       });
+
+       //BORRAR MARCADORES NUEVOS
+       limpiar_marcadores(nuevos_marcadores);
+       marcador.setMap(mapa);
+    });
+}
+ $("#btnContinuar").click(function(){
+         $("#btnCanc").hide();
+            $("#anuncioParte1").hide();
+            $("#ajax").show();
+            $("#anuncioParte2").hide();
+            
+            $("#btnForm").hide();
+            $("#btnContinuar").hide();
+            $("#btnInfoExtra").hide();
+            $("#btnGuardar").show();
+            $("#btnUbicacion").show();
+            ajaxmapa();	
+	    cargarmapa();
+         
+     });
+</script>
 <!--Modal Editar Perfil-->
 
 <div class="modal fade" id="modal-editar-perfil" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

@@ -1,8 +1,8 @@
 <?php  
-    
+    session_start();
     require_once "../controladores/verCategoriasControlador.php";
     require_once "../controladores/verInteresesControlador.php";
-    session_start();
+    
 ?>
 
     <center>

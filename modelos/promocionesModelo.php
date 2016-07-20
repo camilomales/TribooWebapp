@@ -54,11 +54,13 @@ class promocionesModelo extends Modelo{
 	public function promocionesXTiempo($idUsuario){
             ini_set('date.timezone','America/Bogota'); 
             $date=date('Y-m-d');
-            $time=date('H:i:s'); 
+            $time=date('H:i:s');
+            //echo $date." - ".$time; 
             $sql="SELECT idMensaje, valor, mensajes.descripcion as descripcionMsj, tipomensaje.descripcion as descripcionTipo, direccion, hrPubInicio, hrPubFin, rutaImg FROM mensajes 
                     inner join tipomensaje on tipomensaje.idTipoMensaje=mensajes.idTipoMensaje 
                     inner join anunciantes on anunciantes.idAnunciante=mensajes.idAnunciante 
-                    where activo=1 and '$date' <= fechaFin and ('$time' BETWEEN TIME(hrPubInicio) and TIME(hrPubFin)) and evento = 0";	
+                    where activo=1 and '$date' <= fechaFin and ('$time' BETWEEN TIME(hrPubInicio) and TIME(hrPubFin)) and evento = 0";
+            //echo $sql;        	
             $result = $this->_db->query($sql);  
             $registros = $result->fetch_all(MYSQLI_ASSOC);  
             return $registros;	
