@@ -43,13 +43,13 @@ require_once"../controladores/promocionesActualesControlador.php";
                 </a>                      
             </li>
             <li class="active">
-                <a href="misCreditos.php" class="">
+                <a href="misMensajesCercanos.php" class="">
                     <div class="verPromos">
                       <i class="icon_document_alt"></i>
-                      <span>Mis Creditos</span>                          
+                      <span>Promociones Cercanas</span>                          
                     </div>  
                 </a>                      
-            </li>
+            </li>            
             <li class="active">
                 <a href="misEventos.php" class="">
                     <div class="verPromos">
@@ -58,7 +58,14 @@ require_once"../controladores/promocionesActualesControlador.php";
                     </div>  
                 </a>                      
             </li>
-
+            <li class="active">
+                <a href="misCreditos.php" class="">
+                    <div class="verPromos">
+                      <i class="icon_document_alt"></i>
+                      <span>Mis Creditos</span>                          
+                    </div>  
+                </a>                      
+            </li>            
         </ul>
         <!-- sidebar menu end-->
     </div>

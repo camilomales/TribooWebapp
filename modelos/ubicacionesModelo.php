@@ -43,5 +43,44 @@ class ubicacionesModelo extends Modelo{
 		$registros = $result->fetch_array(MYSQLI_ASSOC);  
 		return $registros;	
 	}
-}	
+
+	public function puntosCercanos($lat,$lgt,$distancia){
+		$sql="SELECT *,(6371 * ACOS( 
+                                       COS(RADIANS('$lat')) 
+                                     * COS(RADIANS(latitud)) 
+                                 	 * COS(RADIANS(longitud) 
+                                 	 - RADIANS('$lgt')) 
+                                 	 + SIN(RADIANS('$lat')) 
+                                 	 * SIN(RADIANS(latitud)) 
+                                    )
+                  		) AS distanciaHaversine
+			FROM ubicaciones
+			HAVING distanciaHaversine < '$distancia' /*  KM  a la redonda */
+			ORDER BY distanciaHaversine ASC";
+		$result = $this->_db->query($sql);  
+		$registros = $result->fetch_all(MYSQLI_ASSOC);  
+		return $registros;	
+	}	
+
+
+	public function puntosCercanosArea($lat,$lgt,$latMin,$latMax,$lgtMin,$lgtMax,$distancia){
+		$sql="SELECT *,(6371 * ACOS( 
+                                       COS(RADIANS('$lat')) 
+                                     * COS(RADIANS(latitud)) 
+                                 	 * COS(RADIANS(longitud) 
+                                 	 - RADIANS('$lgt')) 
+                                 	 + SIN(RADIANS('$lat')) 
+                                 	 * SIN(RADIANS(latitud)) 
+                                    )
+                  		) AS distanciaHaversine
+			FROM ubicaciones
+            WHERE (latitud BETWEEN '$latMin' AND '$latMax')
+                   AND (longitud BETWEEN '$lgtMin' AND '$lgtMax')			
+			HAVING distanciaHaversine < '$distancia' /*  KM  a la redonda */
+			ORDER BY distanciaHaversine ASC";
+		$result = $this->_db->query($sql);  
+		$registros = $result->fetch_all(MYSQLI_ASSOC);  
+		return $registros;
+	}	
+}		
 ?>
