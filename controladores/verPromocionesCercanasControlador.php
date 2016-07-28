@@ -4,10 +4,11 @@ require_once "../modelos/promocionesModelo.php";
 $promocionesModel = new promocionesModelo();
 
 // Remplazar con coordenas gps
-$vr_lat=1.219114;
-$vr_lng=-77.281837;
+$vr_lat = $latitudGPS;
+$vr_lng = $longitudGPS;
 $vr_dis=0.5;// en km
-
+//coordenadas obtenidas con gps -- 
+echo $vr_lat.", ".$vr_lng."<br>";
 function calcularLimites($lat, $lng, $distance){
     $earthRadius = 6371;
     $return = array();
